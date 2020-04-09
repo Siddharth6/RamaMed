@@ -1,0 +1,85 @@
+﻿@model IEnumerable<RamaMed.Models.GastroClinic>
+    @{
+    ViewData["Title"] = "Gasto Generate";
+    }
+
+    <div id="generate-model"></div>
+    @{var stringArray = @Html.Raw(Json.Serialize(Model));}
+
+
+
+
+    <script>
+    formitem = @stringArray;
+    console.log(formitem);
+
+    var content = "<div>";
+    content = content.concat("[Key]<br>public string ID { get; set; }<br><br>public string UHID { get; set; }<br><br>public string OPDNO { get; set; }<br>");
+    content = content.concat("<br>");
+    //for (var k in formitem) {
+    //    if (formitem[k].title == "" || formitem[k].title == " ") {
+    //        column_name = formitem[k].heading;
+    //        column_name = column_name.split(" ");
+    //        var column = "";
+    //        for (var i = 0; i < column_name.length;i++) {
+    //            if (i != 0) {
+    //                column = column.concat("_");
+    //            }
+    //            column = column.concat("<span class='text-uppercase'>" + column_name[i] + "</span>");
+    //        }
+    //        content = content.concat("<div>public string " + column + " { get; set; } </div>");
+    //    } else {
+    //        column_name = formitem[k].title;
+    //        column_name = column_name.split(" ");
+    //        var column = "";
+    //        for (var i = 0; i < column_name.length; i++) {
+    //            if (i != 0) {
+    //                column = column.concat("_");
+    //            }
+    //            column = column.concat("<span class='text-uppercase'>" + column_name[i] + "</span>");
+    //        }
+    //        content = content.concat("<div>public string " + column + " { get; set; } </div> ");
+    //    }
+    //}
+
+
+    for (var k in formitem) {
+        if (formitem[k].title == "" || formitem[k].title == " ") {
+            column_name = formitem[k].heading;
+            column_name = column_name.split(" ");
+            var column = "";
+            for (var i = 0; i < column_name.length;i++) {
+                if (i != 0) {
+                    column = column.concat("_");
+                }
+                column = column.concat("<span class='text-uppercase'>" + column_name[i] + "</span>");
+            }
+            column = column.concat("_");
+            column = column.concat("<span class='text-uppercase'>"+ formitem[k].inputOptions +"</span>");
+            content = content.concat("<div class='text-uppercase'>public string " + column + " { get; set; } </div>");
+        } else {
+            column_name = formitem[k].title;
+            column_name = column_name.split(" ");
+            var column = "";
+            for (var i = 0; i < column_name.length; i++) {
+                if (i != 0) {
+                    column = column.concat("_");
+                }
+                column = column.concat("<span class='text-uppercase'>" + column_name[i] + "</span>");
+            }
+            column = column.concat("_");
+            column = column.concat("<span class='text-uppercase'>"+ formitem[k].inputOptions+"</span>");
+            content = content.concat("<div>public string " + column + " { get; set; } </div><br /> ");
+        }
+    }
+
+
+
+
+    content = content.concat("</div>");
+
+    document.getElementById("generate-model").innerHTML = content;
+
+    </script>
+
+

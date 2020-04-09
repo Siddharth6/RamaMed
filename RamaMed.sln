@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RamaMed", "RamaMed\RamaMed.csproj", "{00ED0F44-255B-4EE3-B297-4A1E1B6AE572}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00ED0F44-255B-4EE3-B297-4A1E1B6AE572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00ED0F44-255B-4EE3-B297-4A1E1B6AE572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00ED0F44-255B-4EE3-B297-4A1E1B6AE572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00ED0F44-255B-4EE3-B297-4A1E1B6AE572}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {50266BA8-2C33-4AED-8715-311BD24D37EC}
+	EndGlobalSection
+EndGlobal

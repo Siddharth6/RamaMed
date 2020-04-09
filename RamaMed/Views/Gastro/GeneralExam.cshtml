@@ -1,0 +1,322 @@
+﻿@model RamaMed.Models.GastroGeneralExamination
+@{
+    Layout = "_GastroLayout";
+    ViewData["Title"] = "General Examinations";
+    UserData userdata = ViewBag.userData;
+}
+
+    <div class="card">
+        <div class="card-header text-info text-uppercase">
+            <div class="m-0 p-0 pt-1 float-left">
+                <h4>Clinical Examination</h4>
+                <h6>Gneral Examinations</h6>
+            </div>
+
+            <div class="m-0 p-0 float-right"><a class="btn btn-outline-warning" style="text-decoration:none;" asp-action="CNS">Skip</a></div>
+        </div>
+        <form method="post" class="card-body">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="w-100 form-group">
+                <div class="border-bottom">
+                    <div class="row p-3">
+                        <div class="col-sm-3 text-center">
+                            <span class="font-weight-bold">Name : </span>@userdata.Name
+                        </div>
+
+                        <div class="col-sm-3">
+                            <span class="font-weight-bold text-center">Doctor : </span>@userdata.Doctor
+                        </div>
+
+                        <div class="col-sm-3">
+                            <span class="font-weight-bold text-center">UHID : </span>@userdata.UHID
+                            <input asp-for="@Model.UHID" value="@userdata.UHID" hidden />
+                            <span class="text-danger" asp-validation-for="UHID"></span>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <span class="font-weight-bold text-center">OPDNO : </span>@userdata.OPDNo
+                            <input asp-for="@Model.OPDNO" value="@userdata.OPDNo" hidden />
+                            <span class="text-danger" asp-validation-for="OPDNO"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            @{
+                if (Model != null)
+                {
+                    <input asp-for="@Model.ID" hidden />
+                    <input asp-for="@Model.CREATEDATE" hidden />
+                }
+                else
+                {
+                    <div></div>
+                }
+            }
+
+
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <div class="col-md-4">
+                        <label class="form-label text-capitalize">Built</label>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="form-label px-0 mb-3 ">
+                                    <input class="mb-3 mr-3" type="radio" asp-for="@Model.BUILT" value="Normal" />Normal
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label px-0 mb-3">
+                                    <input class="mb-3 mr-3" type="radio" asp-for="@Model.BUILT" value="Short Stature" />Short Stature
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label px-0 mb-3">
+                                    <input class="mb-3 mr-3" type="radio" asp-for="@Model.BUILT" value="Long Stature" />Long Stature
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <div class="col-md-4">
+                        <label class="form-label text-capitalize">Neutrition</label>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="form-label px-0 mb-3 ">
+                                    <input class="mb-3 mr-3" type="radio" asp-for="@Model.NEUTRITION" value="Normal" />Normal
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label px-0 mb-3">
+                                    <input class="mb-3 mr-3" type="radio" asp-for="@Model.NEUTRITION" value="Thin Built" />Thin Built
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label px-0 mb-3">
+                                    <input class="mb-3 mr-3" type="radio" asp-for="@Model.NEUTRITION" value="Thick Built" />Thick Built
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <div class="col-md-4">
+                        <label class="form-label text-capitalize">Pulse</label>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row border-bottom">
+                            <div class="col-12 border-bottom">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="form-label">Rate</label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <input asp-for="@Model.PULSE_RATE" class="form-control col-6 mb-3 mr-3 d-inline-block" />/min
+                                        <span asp-validation-for="PULSE_RATE"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row mt-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label">
+                                            Radio-Femoral Delay
+                                        </label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label class="form-label px-0 mb-3 col-4">
+                                            <input class="form-check-inline mr-3" type="radio" asp-for="@Model.PULSE_RADIO_FEROMAL_DELAY" value="Yes" />Yes
+                                        </label>
+                                        <label class="form-label px-0 mb-3 col-4">
+                                            <input class="form-check-inline mr-3" type="radio" asp-for="@Model.PULSE_RADIO_FEROMAL_DELAY" value="No" />No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row border-bottom">
+                            <div class="col-12">
+                                <div class="row mt-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label">Rythm</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <label class="form-label pl-3 mb-3 col-md-6">
+                                                <input class="form-check-inline mr-3" type="radio" asp-for="@Model.PULSE_RYTHM" value="Regularly Regular" />Regularly Regular
+                                            </label>
+                                            <label class="form-label pl-3 mb-3 col-md-6">
+                                                <input class="form-check-inline mr-3" type="radio" asp-for="@Model.PULSE_RYTHM" value="Regularly Irregular" />Regularly Irregular
+                                            </label>
+                                            <label class="form-label pl-3 mb-3 col-md-6">
+                                                <input class="form-check-inline mr-3" type="radio" asp-for="@Model.PULSE_RYTHM" value="Irregularly Irregular" />Irregularly Irregular
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row border-bottom mt-3">
+                            <div class="col-md-4">
+                                <label class="form-label">
+                                    Volume
+                                </label>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="form-label px-0 mb-3 col-4">
+                                    <input class="form-check-inline mr-3" type="radio" asp-for="@Model.PULSE_VOLUME" value="Ok" />Ok
+                                </label>
+                                <label class="form-label px-0 mb-3 col-4">
+                                    <input class="form-check-inline mr-3" type="radio" asp-for="@Model.PULSE_VOLUME" value="No" />No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row border-bottom mt-3">
+                            <div class="col-md-4">
+                                <label class="form-label">
+                                    Condotion of Arterial Wall
+                                </label>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="form-label px-0 mb-3 col-4">
+                                    <input class="form-check-inline mr-3" type="radio" asp-for="@Model.PULSE_CONDITION_OF_ARTERIAL_WALL" value="Ok" />Ok
+                                </label>
+                                <label class="form-label px-0 mb-3 col-4">
+                                    <input class="form-check-inline mr-3" type="radio" asp-for="@Model.PULSE_CONDITION_OF_ARTERIAL_WALL" value="No" />No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row border-bottom mt-3">
+                            <div class="col-md-4">
+                                <label class="form-label">
+                                    Character
+                                </label>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="form-label px-0 mb-3 col-4">
+                                    <input class="form-check-inline mr-3" type="radio" asp-for="@Model.PULSE_CHARACTER" value="Ok" />Ok
+                                </label>
+                                <label class="form-label px-0 mb-3 col-4">
+                                    <input class="form-check-inline mr-3" type="radio" asp-for="@Model.PULSE_CHARACTER" value="No" />No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <label class="form-label">
+                                    Peripheral Pulses
+                                </label>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="form-label px-0 mb-3 col-4">
+                                    <input class="form-check-inline mr-3" type="radio" asp-for="@Model.PULSE_PERIPHERAL_PULSES" value="Ok" />Ok
+                                </label>
+                                <label class="form-label px-0 mb-3 col-4">
+                                    <input class="form-check-inline mr-3" type="radio" asp-for="@Model.PULSE_PERIPHERAL_PULSES" value="No" />No
+                                </label>
+                            </div>
+                        </div>
+                        @*<div class="row">
+                        <label class="col-md-6 form-label">
+                            Volume
+                            <input class="form-check-inline float-right mr-5 mt-2" type="checkbox" asp-for="@Model.PULSE_VOLUME" value="Yes" />
+                        </label>
+                        <label class="col-md-6 form-label">
+                            Condotion of Arterial Wall
+                            <input class="form-check-inline float-right mr-5 mt-2" type="checkbox" asp-for="@Model.PULSE_CONDITION_OF_ARTERIAL_WALL" value="Yes" />
+                        </label>
+                        <label class="col-md-6 form-label">
+                            Character
+                            <input class="form-check-inline float-right mr-5 mt-2" type="checkbox" asp-for="@Model.PULSE_CHARACTER" value="Yes" />
+                        </label>
+                        <label class="col-md-6 form-label">
+                            Peripheral Pulses
+                            <input class="form-check-inline float-right mr-5 mt-2" type="checkbox" asp-for="@Model.PULSE_PERIPHERAL_PULSES" value="Yes" />
+                        </label>
+                    </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <div class="col-md-4">
+                        <label class="form-label text-capitalize">BLOOD PRESSURE</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="@Model.BLOOD_PRESSURE" class="form-control col-3 d-inline-block mb-3 mr-2" />mmhg
+                        <span asp-validation-for="BLOOD_PRESSURE"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <div class="col-md-4">
+                        <label class="form-label text-capitalize">Temperature</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="@Model.TEMPERATURE" class="form-control col-3 mb-3 d-inline-block mr-2" />&#8457;
+                        <span asp-validation-for="TEMPERATURE"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <div class="col-md-4">
+                        <label class="form-label text-capitalize">Pallor</label>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="form-label px-0 mb-3 ">
+                                    <input class="mb-3 mr-3" type="radio" asp-for="@Model.PALLOR" value="Present" />Present
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label px-0 ">
+                                    <input class="mb-3 mr-3" type="radio" asp-for="@Model.PALLOR" value="Not" />Not
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="card-footer bg-white border-0 mt-0 pt-0">
+            <a class="ml-5 btn btn-outline-warning btn-danger text-white py-3" style="text-decoration:none" asp-action="Comorbidities">Previous</a>
+            <a class="ml-1 btn btn-outline-warning btn-danger text-white py-3" style="text-decoration:none" asp-action="CNS">Skip</a>
+            <input class="mr-5 float-right btn btn-outline-warning btn-success text-light py-3" type="submit" asp-action="GeneralExamSave" value="Next" />
+        </div>*@
+            <div class="card-footer bg-white border-0 mr-3 py-0">
+                <input class="float-right btn btn-outline-warning btn-success text-light py-3" type="submit" asp-action="GeneralExamSave" value="Next" />
+            </div>
+        </form>
+    </div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+
+<script>
+    window.onload = function () {
+        var dropdown = document.getElementById("CE");
+        dropdown.classList.add("activelink");
+        var element = document.getElementById("CE1");
+        element.classList.add("activelink");
+    };
+</script>
+
+

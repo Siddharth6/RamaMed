@@ -1,0 +1,918 @@
+﻿
+@*<div class="card">
+        <div class="card-header text-capitalize bg-info text-center text-light"><h3>Clinical symptoms</h3></div>
+        <form method="post" class="card-body">
+
+            <table>
+                @foreach (var elem in (IEnumerable<GastroCS>)ViewData["FormData"])
+                {
+                    <tr>
+                        <td>@elem.ABDOMINAL_DISTENSION_DURATION</td>
+                        <td>@elem.ALTERED_BOWEL_HABITS_DURATION</td>
+                        <td>@elem.BREATHELESSNESS_DURATION</td>
+                        <td>@elem.EASY_FATIGUABILITY_DURATION</td>
+                    </tr>
+
+                }
+            </table>
+
+            <div class="card-footer text-right row">
+                <input class="btn btn-outline-primary btn-info text-light offset-6 col-2" type="submit" value="Save" asp-action="ClinicalSave" />
+                <a asp-action="Comorbities" class="btn btn-link btn-outline-info btn-primary text-light offset-1 col-2" style="text-decoration:none;">Skip</a>
+            </div>
+        </form>
+    </div>
+
+
+    @{var stringArray = @Html.Raw(Json.Serialize(ViewData["FormData"]));}
+
+
+    <script>
+        var formitem = @stringArray;
+        console.log(formitem);
+    </script>
+
+    <script src="~/js/clinical.js"></script>
+
+    @section Scripts{
+        <partial name="_ValidationScriptsPartial" />
+    }*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div>
+        @* <form method="post" asp-action="ClinicalSave">
+            @Html.TextBoxFor(x => x.ID)
+            @Html.TextBoxFor(x => x.UHID)
+            @Html.TextBoxFor(x => x.OPDNO)
+            @Html.TextBoxFor(x => x.NAUSEA_DURATION)
+            @Html.TextBoxFor(x => x.INVOLUNTARY_MOVEMENTS_DURATION)
+            @Html.TextBoxFor(x => x.VOMITING_DURATION)
+            @Html.TextBoxFor(x => x.ALTERED_SENSORIUM_DURATION)
+            @Html.TextBoxFor(x => x.ALTERED_BOWEL_HABITS_DURATION)
+            @Html.TextBoxFor(x => x.PERSONALITY_CHANGES_DURATION)
+            @Html.TextBoxFor(x => x.HEMATEMESIS_DURATION)
+            @Html.TextBoxFor(x => x.ALTERED_SLEEP_PATTERN_DURATION)
+            @Html.TextBoxFor(x => x.MALENA_DURATION)
+            @Html.TextBoxFor(x => x.HEMATOCHEZIA_DURATION)
+            @Html.TextBoxFor(x => x.DYSPESIA_DURATION)
+            @Html.TextBoxFor(x => x.OLIGURIA_DURATION)
+            @Html.TextBoxFor(x => x.FEVER_DURATION)
+            @Html.TextBoxFor(x => x.DYSPHAGIA_DURATION)
+            @Html.TextBoxFor(x => x.WEIGHT_LOSS_DURATION)
+            @Html.TextBoxFor(x => x.ODYNOPHAGIA_DURATION)
+            @Html.TextBoxFor(x => x.ICTERUS_DURATION)
+            @Html.TextBoxFor(x => x.FACIAL_PUFFINESS_DURATION)
+            @Html.TextBoxFor(x => x.ABDOMINAL_DISTENSION_DURATION)
+            @Html.TextBoxFor(x => x.SWELLING_OF_BOTH_LEGS_DURATION)
+            @Html.TextBoxFor(x => x.ABDOMINAL_PAIN_DURATION)
+            @Html.TextBoxFor(x => x.YELLOWISH_DISCOLORATION_OF_URINE_DURATION)
+            @Html.TextBoxFor(x => x.EASY_FATIGUABILITY_DURATION)
+            @Html.TextBoxFor(x => x.BREATHELESSNESS_DURATION)
+            <input type="submit" value="save" />
+        </form> *@
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div>
+    @*<section id="clinical" class="border border-warning my-2 pb-0">
+            <div class="card-header bg-warning text-white text-center">
+                <h5>Clinical Symptoms</h5>
+            </div>
+            <div class="table-responsive p-3">
+                <div class="row mw-100 p-3">
+                    <table class="data-table outline-warning table col-md-6">
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>Duration</th>
+                        </tr>
+                        <tr>
+                            <td>Nausea</td>
+                            <td>@Clinical.NAUSEA_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Vomiting</td>
+                            <td>@Clinical.VOMITING_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Altered bowel habits</td>
+                            <td>@Clinical.ALTERED_BOWEL_HABITS_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Malena</td>
+                            <td>@Clinical.MALENA_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Dyspesia</td>
+                            <td>@Clinical.DYSPESIA_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Fever</td>
+                            <td>@Clinical.FEVER_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Weight loss</td>
+                            <td>@Clinical.WEIGHT_LOSS_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Icterus</td>
+                            <td>@Clinical.ICTERUS_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Abdominal distension</td>
+                            <td>@Clinical.ABDOMINAL_DISTENSION_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Abdominal pain</td>
+                            <td>@Clinical.ABDOMINAL_PAIN_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Easy fatiguability</td>
+                            <td>@Clinical.EASY_FATIGUABILITY_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Breathelessness</td>
+                            <td>@Clinical.BREATHELESSNESS_DURATION</td>
+                        </tr>
+                    </table>
+                    <table class="data-table  outline-warning table col-md-6">
+                        <tr class=" col-md-6">
+                            <th></th>
+                            <th>Duration</th>
+                        </tr>
+                        <tr class="col-md-6">
+                            <td>Involuntary movements</td>
+                            <td>@Clinical.INVOLUNTARY_MOVEMENTS_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Altered sensorium</td>
+                            <td>@Clinical.ALTERED_SENSORIUM_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Personality changes</td>
+                            <td>@Clinical.PERSONALITY_CHANGES_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Altered sleep pattern</td>
+                            <td>@Clinical.ALTERED_SLEEP_PATTERN_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Hematochezia</td>
+                            <td>@Clinical.HEMATOCHEZIA_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Oliguria</td>
+                            <td>@Clinical.OLIGURIA_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Dysphagia</td>
+                            <td>@Clinical.DYSPHAGIA_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Odynophagia</td>
+                            <td>@Clinical.ODYNOPHAGIA_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Facial puffiness</td>
+                            <td>@Clinical.FACIAL_PUFFINESS_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>Swelling of both legs</td>
+                            <td>@Clinical.SWELLING_OF_BOTH_LEGS_DURATION</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Yellowish discoloration
+                                of urine
+                            </td>
+                            <td>@Clinical.YELLOWISH_DISCOLORATION_OF_URINE_DURATION</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="comorbidities" class="border border-info my-2 pb-0">
+            <div class="card-header bg-info text-white text-center">
+                <h5>Comorbidities</h5>
+            </div>
+            <div class="table-responsive">
+                <div class="mw-100 p-3">
+                    <table class="data-table outline-info my-0 table">
+                        <tr>
+                            <th></th>
+                            <th>Duration</th>
+                            <th>Medication</th>
+                        </tr>
+                        <tr>
+                            <td>Hypertension</td>
+                            <td>@Comorbidites.HYPERTENSION_DURATION</td>
+                            <td>@Comorbidites.HYPERTENSION_MEDICATION</td>
+                        </tr>
+                        <tr>
+                            <td>Coronary Artery Disease</td>
+                            <td>@Comorbidites.CORONARY_ARTERY_DISEASE_DURATION</td>
+                            <td>@Comorbidites.CORONARY_ARTERY_DISEASE_MEDICATION</td>
+                        </tr>
+                        <tr>
+                            <td>COPD</td>
+                            <td>@Comorbidites.COPD_DURATION</td>
+                            <td>@Comorbidites.COPD_MEDICATION</td>
+                        </tr>
+                        <tr>
+                            <td>Asthma</td>
+                            <td>@Comorbidites.ASTHMA_DURATION</td>
+                            <td>@Comorbidites.ASTHMA_MEDICATION</td>
+                        </tr>
+                        <tr>
+                            <td>CKD</td>
+                            <td>@Comorbidites.CKD_DURATION</td>
+                            <td>@Comorbidites.CKD_MEDICATION</td>
+                        </tr>
+                        <tr>
+                            <td>Heart Failure</td>
+                            <td>@Comorbidites.HEART_FAILURE_DURATION</td>
+                            <td>@Comorbidites.HEART_FAILURE_MEDICATION</td>
+                        </tr>
+                        <tr>
+                            <td>Hypothyroidism</td>
+                            <td>@Comorbidites.HYPOTHYROIDISM_DURATION</td>
+                            <td>@Comorbidites.HYPOTHYROIDISM_MEDICATION</td>
+                        </tr>
+                    </table>
+                    <div class="data-table outline-info p-3">
+                        <div class="row p-3 border-bottom">
+                            <div class="col-md-4">
+                                Pulmonary TB
+                            </div>
+                            <div class="col-md-8">
+                                @Comorbidites.PULMONARY_TB
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        Date of diagnosis:@Comorbidites.PULMONARY_TB_DATE_OF_DIAGNOSIS
+                                    </div>
+                                    <div class="col-md-6">
+                                        ATT Regimen:@Comorbidites.PULMONARY_TB_ATT_REGIMEN
+                                    </div>
+                                    <div class="col-md-6">
+                                        Date of starting:@Comorbidites.PULMONARY_TB_DATE_OF_STARTING
+                                    </div>
+                                    <div class="col-md-6">
+                                        Date of ending:@Comorbidites.PULMONARY_TB_DATE_OF_ENDING
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-3 border-bottom">
+                            <div class="col-md-4">
+                                HIV
+                            </div>
+                            <div class="col-md-8">
+                                @{
+                                    if (Comorbidites.HIV != null)
+                                    {
+                                        @Comorbidites.HIV
+                                    }
+                                    else
+                                    {
+                                        <span>---</span>
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                        <div class="row p-3 border-bottom">
+                            <div class="col-md-4">
+                                HBsAG
+                            </div>
+                            <div class="col-md-8">
+                                @{
+                                    if (Comorbidites.HBSAG != null)
+                                    {
+                                        @Comorbidites.HBSAG
+                                    }
+                                    else
+                                    {
+                                        <span>---</span>
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                        <div class="row p-3 border-bottom">
+                            <div class="col-md-4">
+                                Anti HCV
+                            </div>
+                            <div class="col-md-8">
+                                @{
+                                    if (Comorbidites.ANTI_HCV != null)
+                                    {
+                                        @Comorbidites.ANTI_HCV
+                                    }
+                                    else
+                                    {
+                                        <span>---</span>
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                        <div class="row p-3 border-bottom">
+                            <div class="col-md-4">
+                                Diabetes Mellitus
+                            </div>
+                            <div class="col-md-8">
+                                @{
+                                    if (Comorbidites.DIABETES_MELLITUS != null)
+                                    {
+                                        @Comorbidites.DIABETES_MELLITUS
+                                    }
+                                    else
+                                    {
+                                        <span>---</span>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="personal-habit" class="border border-primary my-2">
+            <div class="card-header bg-primary text-white text-center">
+                <h5>Clinical Symptoms</h5>
+            </div>
+            <div class="p-3">
+                <div class="data-table outline-primary p-3">
+                    <div class="row p-3 border-bottom">
+                        <div class="col-md-4">Smoking</div>
+                        <div class="col-md-8">
+                            @{
+                                if (Habits.SMOKING != null && Habits.SMOKING == "Yes")
+                                {
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            Pack Years: @Habits.SMOKING_PACK_YEARS
+                                        </div>
+                                        <div class="col-md-6">
+                                            Duration: @Habits.SMOKING_DURATION
+                                        </div>
+                                        <div class="col-md-6">
+                                            Years: @Habits.SMOKING_YEARS
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div>---</div>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="row p-3 border-bottom">
+                        <div class="col-md-4">Alcohol</div>
+                        <div class="col-md-8">
+                            @{
+                                if (Habits.ALCOHOL_INTAKE != null && Habits.ALCOHOL_INTAKE == "Yes")
+                                {
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            Quantity: @Habits.ALCOHOL_INTAKE_QUANTITY
+                                        </div>
+                                        <div class="col-md-6">
+                                            Duration: @Habits.ALCOHOL_INTAKE_DURATION
+                                        </div>
+                                        <div class="col-md-6">
+                                            Years: @Habits.ALCOHOL_INTAKE_YEARS
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div>---</div>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="row p-3 border-bottom">
+                        <div class="col-md-4">Other Substances Use</div>
+                        <div class="col-md-8">
+                            @Habits.OTHER_SUBSTANCE_USE
+                        </div>
+                    </div>
+                    <div class="row p-3 border-bottom">
+                        <div class="col-md-4">Life Style</div>
+                        <div class="col-md-8">
+                            @Habits.LIFE_STYLE
+                        </div>
+                    </div>
+                    <div class="row p-3 border-bottom">
+                        <div class="col-md-4">Family History</div>
+                        <div class="col-md-8">
+                            @Habits.FAMILY_HISTORY
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="general-exams" class="border border-warning my-2">
+            <div class="card-header bg-warning text-white text-center">
+                <h5>General Examinations</h5>
+            </div>
+            <div class="p-3">
+                <div class="data-table outline-warning p-3">
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Built</div>
+                        <div class="col-6">@GenExam.BUILT</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Neutrition</div>
+                        <div class="col-6">@GenExam.NEUTRITION</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-md-4">
+                            Pulse
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    Rate: @GenExam.PULSE_RATE /min
+                                </div>
+                                <div class="col-sm-6">
+                                    Radio Femoral Delay: @GenExam.PULSE_RADIO_FEROMAL_DELAY
+                                </div>
+                                <div class="col-sm-6">
+                                    Rythm: @GenExam.PULSE_RYTHM
+                                </div>
+                                <div class="col-sm-6">
+                                    Volume: @GenExam.PULSE_VOLUME
+                                </div>
+                                <div class="col-sm-6">
+                                    Condition Of Arterial Wall: @GenExam.PULSE_CONDITION_OF_ARTERIAL_WALL
+                                </div>
+                                <div class="col-sm-6">
+                                    Character: @GenExam.PULSE_CHARACTER
+                                </div>
+                                <div class="col-sm-6">
+                                    Peripheral Pulses: @GenExam.PULSE_PERIPHERAL_PULSES
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Blood Pressure</div>
+                        <div class="col-6">@GenExam.BLOOD_PRESSURE mmhg</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Temperature</div>
+                        <div class="col-6">@GenExam.TEMPERATURE &#8457;</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Pallor</div>
+                        <div class="col-6">@GenExam.PALLOR</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Ecterus</div>
+                        <div class="col-6">@GenExam.ESTERUS</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Cynosis</div>
+                        <div class="col-6">@GenExam.CYNOSIS</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Clubbing</div>
+                        <div class="col-6">@GenExam.CLUBBING</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Pedal Edema</div>
+                        <div class="col-6">@GenExam.PEDAL_EDEMA</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Lymph Node</div>
+                        <div class="col-6">@GenExam.LYMPH_NODE</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">JVP</div>
+                        <div class="col-6">@GenExam.JVP</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Neck Swelling</div>
+                        <div class="col-6">@GenExam.NECK_SWELLING</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="general-exams" class="border border-info my-2">
+            <div class="card-header bg-info text-white text-center">
+                <h5>SYSTEMATIC EXAMINATION(CNS)</h5>
+            </div>
+            <div class="p-3">
+                <div class="data-table outline-info p-3">
+                    <h6 class="text-info text-center">Higher Functions</h6>
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Conscious</div>
+                        <div class="col-6">@Cns.HIGHER_FUNCTIONS_CONSCIOUS</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-md-6">Unconscious- Glassgo coma scale</div>
+                        <div class="col-md-6">
+                            E<span>@Cns.HIGHER_FUNCTIONS_UNCONSCIOUS_E</span>
+                            V<span>@Cns.HIGHER_FUNCTIONS_UNCONSCIOUS_V</span>
+                            M<span>@Cns.HIGHER_FUNCTIONS_UNCONSCIOUS_M</span>
+                        </div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Orientation</div>
+                        <div class="col-6">@Cns.HIGHER_FUNCTIONS_ORIENTATION</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Appearance</div>
+                        <div class="col-6">@Cns.HIGHER_FUNCTIONS_APPEARANCE</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Behavior</div>
+                        <div class="col-6">@Cns.HIGHER_FUNCTIONS_BEHAVIOUR</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Memory</div>
+                        <div class="col-6">@Cns.HIGHER_FUNCTIONS_MEMORY</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Speech</div>
+                        <div class="col-6">@Cns.HIGHER_FUNCTIONS_SPEECH</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Intelligence</div>
+                        <div class="col-6">@Cns.HIGHER_FUNCTIONS_INTELLIGENCE</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Hallucination</div>
+                        <div class="col-6">@Cns.HIGHER_FUNCTIONS_HALLUCINATION</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Delusion</div>
+                        <div class="col-6">@Cns.HIGHER_FUNCTIONS_DELUSION</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Cranial Nerves</div>
+                        <div class="col-6">@Cns.CRANIAL_NERVES</div>
+                    </div>
+
+                    <h6 class="text-info text-center">Motor System</h6>
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Neutrition</div>
+                        <div class="col-6">@Cns.MOTOR_SYSTEM_NEUTRITION</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Tone</div>
+                        <div class="col-6">@Cns.MOTOR_SYSTEM_TONE</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Power</div>
+                        <div class="col-6">@Cns.MOTOR_SYSTEM_POWER</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Co-ordination</div>
+                        <div class="col-6">@Cns.MOTOR_SYSTEM_CO_ORDINATION</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Reflexes</div>
+                        <div class="col-6">@Cns.MOTOR_SYSTEM_REFLEXES</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Gait</div>
+                        <div class="col-6">@Cns.MOTOR_SYSTEM_GAIT</div>
+                    </div>
+
+                    <h6 class="text-info text-center">Sensory System</h6>
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Superficial Sensation</div>
+                        <div class="col-6">@Cns.SENSORY_SYSTEM_SUPERFICIAL_SENSATION</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Deep Sensation</div>
+                        <div class="col-6">@Cns.SENSORY_SYSTEM_DEEP_SENSATIONS</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Cortical Sensation</div>
+                        <div class="col-6">@Cns.SENSORY_SYSTEM_CORTICAL_SENSATION</div>
+                    </div>
+
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Craniovertebral Examination</div>
+                        <div class="col-6">@Cns.CRANIOVERTEBRAL_EXAMINATION</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Cerebellar Signs</div>
+                        <div class="col-6">@Cns.CEREBELLAR_SIGNS</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Automatic System</div>
+                        <div class="col-6">@Cns.AUTONOMIC_SYSTEM</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Sign Of Meningial Irritation</div>
+                        <div class="col-6">@Cns.SIGNS_OF_MENINGIAL_IRRITATION</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Pupil</div>
+                        <div class="col-6">@Cns.PUPIL</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="Resp-exams" class="border border-primary my-2">
+            <div class="card-header bg-primary text-white text-center">
+                <h5>SYSTEMATIC EXAMINATION(Respiratory System)</h5>
+            </div>
+            <div class="p-3">
+                <div class="data-table outline-primary p-3">
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Rate</div>
+                        <div class="col-6">@Resp.RATE /min</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Rhythm</div>
+                        <div class="col-6">@Resp.RHYTHM</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Movements</div>
+                        <div class="col-6">@Resp.MOVEMENTS</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Position Of Trachea</div>
+                        <div class="col-6">@Resp.POSITION_OF_TRACHEA</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Breath Sound</div>
+                        <div class="col-6">@Resp.BREATH_SOUND</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Crepts</div>
+                        <div class="col-6">@Resp.CREPTS</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Ronchi</div>
+                        <div class="col-6">@Resp.RONCHI</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Wheezing</div>
+                        <div class="col-6">@Resp.WHEEZING</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Pleural Rub</div>
+                        <div class="col-6">@Resp.PLEURAL_RUB</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Pleural Fluid</div>
+                        <div class="col-6">@Resp.PLEURAL_FLUID</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Bronchial Breath Sounds</div>
+                        <div class="col-6">@Resp.BRONCHIAL_BREATH_SOUNDS</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="Abd-exams" class="border border-warning my-2">
+            <div class="card-header bg-warning text-white text-center">
+                <h5>SYSTEMATIC EXAMINATION(Respiratory System)</h5>
+            </div>
+            <div class="p-3">
+                <div class="data-table outline-warning p-3">
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Pain</div>
+                        <div class="col-6">@Abd.PAIN /min</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Temperature</div>
+                        <div class="col-6">@Abd.TEMPERATURE</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Rigidity</div>
+                        <div class="col-6">@Abd.RIGIDITY</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Venous Dilatation</div>
+                        <div class="col-6">@Abd.VENOUS_DILATATION </div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Scar Marks</div>
+                        <div class="col-6">@Abd.SCAR_MARKS </div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Color Of Skin</div>
+                        <div class="col-6">@Abd.COLOUR_OF_SKIN </div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Position of Umbilicus</div>
+                        <div class="col-6">@Abd.POSITION_OF_UMBILICUS </div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Movement of Abdomen</div>
+                        <div class="col-6">@Abd.MOVEMENT_OF_ABDOMEN</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Shape Of Abdomen</div>
+                        <div class="col-6">@Abd.SHAPE_OF_ABDOMEN </div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Shifting Dullness</div>
+                        <div class="col-6">@Abd.SHIFTING_DULLNESS</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Fluid Thrill</div>
+                        <div class="col-6">@Abd.FLUID_THRILL </div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Signs Of Hernia</div>
+                        <div class="col-6">@Abd.SIGNS_OF_HERNIA </div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Testicular Swelling</div>
+                        <div class="col-6">@Abd.TESTICULER_SWELLING </div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Hemorrhoids</div>
+                        <div class="col-6">@Abd.HEMORRHOIDS </div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Fissure</div>
+                        <div class="col-6">@Abd.FISSURE </div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Prostate Condition</div>
+                        <div class="col-6">@Abd.PROSTATE_CONDITION </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="CVS-exams" class="border border-info my-2">
+            <div class="card-header bg-info text-white text-center">
+                <h5>SYSTEMATIC EXAMINATION(CVS)</h5>
+            </div>
+            <div class="p-3">
+                <div class="data-table outline-info p-3">
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Heart Rate</div>
+                        <div class="col-6">@Cvs.HEART_RATE /min</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Rhythm</div>
+                        <div class="col-6">@Cvs.RHYTHM</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Shape Of Chest</div>
+                        <div class="col-6">@Cvs.SHAPE_OF_CHEST</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Dilated Veins Over Chest</div>
+                        <div class="col-6">@Cvs.DIALATED_VEINS_OVER_CHEST</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Scar Marks Over Chest</div>
+                        <div class="col-6">@Cvs.SCAR_MARKS_OVER_CHEST</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Apex</div>
+                        <div class="col-6">@Cvs.APEX</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Thrill</div>
+                        <div class="col-6">@Cvs.THRILL</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Heart Sounds</div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-6">S1 & S2</div>
+                                <div class="col-6">@Cvs.HEART_SOUNDS_S1_S2</div>
+
+                                <div class="col-6">S3</div>
+                                <div class="col-6">@Cvs.HEART_SOUNDS_S3</div>
+
+                                <div class="col-6">S4</div>
+                                <div class="col-6">@Cvs.HEART_SOUNDS_S4</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Pericardial Rub</div>
+                        <div class="col-6">@Cvs.HEART_SOUNDS_PERICARDIAL_RUB</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
+                        <div class="col-6">Murmur</div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-6">Diastolic</div>
+                                <div class="col-6">@Cvs.MURMUR_DIASTOLIC</div>
+
+                                <div class="col-6">Systolic</div>
+                                <div class="col-6">@Cvs.MURMUR_SYSTOLIC</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>*@
+</div>

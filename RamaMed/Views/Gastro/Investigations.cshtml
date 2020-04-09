@@ -1,0 +1,395 @@
+﻿@model RamaMed.Models.GastroInvestigation
+@{
+    Layout = "_GastroLayout";
+    ViewData["Title"] = "Investigations";
+    UserData userdata = ViewBag.userData;
+}
+
+<div class="card">
+    <div class="card-header text-info text-uppercase">
+            <div class="m-0 p-0 pt-1 float-left"><h4>Investigations</h4></div>
+
+            <div class="m-0 p-0 float-right"><a class="btn btn-outline-warning" style="text-decoration:none;" asp-action="Other">Skip</a></div>
+        </div>
+    <form method="post" class="card-body">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="w-100 form-group">
+            <div class="border-bottom">
+                <div class="row p-3">
+                    <div class="col-sm-3 text-center">
+                        <span class="font-weight-bold">Name : </span>@userdata.Name
+                    </div>
+
+                    <div class="col-sm-3">
+                        <span class="font-weight-bold text-center">Doctor : </span>@userdata.Doctor
+                    </div>
+
+                    <div class="col-sm-3">
+                        <span class="font-weight-bold text-center">UHID : </span>@userdata.UHID
+                        <input asp-for="@Model.UHID" value="@userdata.UHID" hidden />
+                        <span class="text-danger" asp-validation-for="UHID"></span>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <span class="font-weight-bold text-center">OPDNO : </span>@userdata.OPDNo
+                        <input asp-for="@Model.OPDNO" value="@userdata.OPDNo" hidden />
+                        <span class="text-danger" asp-validation-for="OPDNO"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @{
+            if (Model != null)
+            {
+                <input asp-for="@Model.ID" hidden />
+                <input asp-for="@Model.CREATEDATE" hidden />
+            }
+            else
+            {
+                <div></div>
+            }
+        }
+
+        <div class="px-5 py-2">
+            <div class="row border-bottom">
+
+                @*first row*@
+                <div class="col-sm-4 pt-2 bg-alt-2">
+                    <label class="form-label text-capitalize" asp-for="@Model.CBC"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.CBC" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.CBC" value="No" />No
+                    </label>
+                </div>
+                <div class="col-sm-4 pt-2 bg-alt-1">
+                    <label class="form-label text-capitalize" asp-for="@Model.PBS"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.PBS" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.PBS" value="No" />No
+                    </label>
+                </div>
+                <div class="col-sm-4 pt-2 bg-alt-2">
+                    <label class="form-label text-capitalize" asp-for="@Model.RFT"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.RFT" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.RFT" value="No" />No
+                    </label>
+                </div>
+
+                @*second row*@
+                <div class="col-sm-4 pt-2 bg-alt-1">
+                    <label class="form-label text-capitalize" asp-for="@Model.RBS"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.RBS" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.RBS" value="No" />No
+                    </label>
+                </div>
+                <div class="col-sm-4 pt-2 bg-alt-2">
+                    <label class="form-label text-capitalize" asp-for="@Model.LFT"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.LFT" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.LFT" value="No" />No
+                    </label>
+                </div>
+                <div class="col-sm-4 pt-2 bg-alt-1">
+                    <label class="form-label text-capitalize" asp-for="@Model.BS"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.BS" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.BS" value="No" />No
+                    </label>
+                </div>
+
+                @*third row*@
+                <div class="col-sm-4 pt-2 bg-alt-2">
+                    <label class="form-label text-capitalize" asp-for="@Model.SR_ELECTROLYTE"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.SR_ELECTROLYTE" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.SR_ELECTROLYTE" value="No" />No
+                    </label>
+                </div>
+                <div class="col-sm-4 pt-2 bg-alt-1">
+                    <label class="form-label text-capitalize" asp-for="@Model.BT_CT"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.BT_CT" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.BT_CT" value="No" />No
+                    </label>
+                </div>
+                <div class="col-sm-4 pt-2 bg-alt-2">
+                    <label class="form-label text-capitalize" asp-for="@Model.PT_INR"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.PT_INR" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.PT_INR" value="No" />No
+                    </label>
+                </div>
+
+                @*forth row*@
+                <div class="col-sm-4 pt-2 bg-alt-1">
+                    <label class="form-label text-capitalize" asp-for="@Model.ECG"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.ECG" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.ECG" value="No" />No
+                    </label>
+                </div>
+                <div class="col-sm-4 pt-2 bg-alt-2">
+                    <label class="form-label text-capitalize" asp-for="@Model.ECHOCARDIOLOGY_2D"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.ECHOCARDIOLOGY_2D" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.ECHOCARDIOLOGY_2D" value="No" />No
+                    </label>
+                </div>
+                <div class="col-sm-4 pt-2 bg-alt-1">
+                    <label class="form-label text-capitalize" asp-for="@Model.CHEST_X_RAY"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.CHEST_X_RAY" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.CHEST_X_RAY" value="No" />No
+                    </label>
+                </div>
+
+                @*fifth row*@
+                <div class="col-sm-4 pt-2 bg-alt-2">
+                    <label class="form-label text-capitalize" asp-for="@Model.UGI_ENDOSCOPY"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.UGI_ENDOSCOPY" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.UGI_ENDOSCOPY" value="No" />No
+                    </label>
+                </div>
+                <div class="col-sm-4 pt-2 bg-alt-1">
+                    <label class="form-label text-capitalize" asp-for="@Model.COLONOSCOPY_SIGMOIDOSCOPY"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.COLONOSCOPY_SIGMOIDOSCOPY" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.COLONOSCOPY_SIGMOIDOSCOPY" value="No" />No
+                    </label>
+                </div>
+                <div class="col-sm-4 pt-2 bg-alt-2">
+                    <label class="form-label text-capitalize" asp-for="@Model.ASCITIC_FLUID_ANALYSIS"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.ASCITIC_FLUID_ANALYSIS" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.ASCITIC_FLUID_ANALYSIS" value="No" />No
+                    </label>
+                </div>
+
+                @*sixth row*@
+                <div class="col-sm-4 pt-2 bg-alt-1">
+                    <label class="form-label text-capitalize" asp-for="@Model.TUMOR_MARKERS"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.TUMOR_MARKERS" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.TUMOR_MARKERS" value="No" />No
+                    </label>
+                </div>
+                <div class="col-sm-4 pt-2 bg-alt-2">
+                    <label class="form-label text-capitalize" asp-for="@Model.LIVER_BIOPSY"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.LIVER_BIOPSY" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.LIVER_BIOPSY" value="No" />No
+                    </label>
+                </div>
+                <div class="col-sm-4 pt-2 bg-alt-1">
+                    <label class="form-label text-capitalize" asp-for="@Model.SR_AMYLASE"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.SR_AMYLASE" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.SR_AMYLASE" value="No" />No
+                    </label>
+                </div>
+
+                @*seventh row*@
+                <div class="col-sm-4 pt-2 bg-alt-2">
+                    <label class="form-label text-capitalize" asp-for="@Model.LIPASE"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.LIPASE" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.LIPASE" value="No" />No
+                    </label>
+                </div>
+                <div class="col-sm-4 pt-2 bg-alt-1">
+                    <label class="form-label text-capitalize" asp-for="@Model.MRCP"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.MRCP" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.MRCP" value="No" />No
+                    </label>
+                </div>
+                <div class="col-sm-4 pt-2 bg-alt-2">
+                    <label class="form-label text-capitalize" asp-for="@Model.ERCP"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.ERCP" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.ERCP" value="No" />No
+                    </label>
+                </div>
+
+                @*eigth row*@
+                <div class="col-sm-6 pt-2 bg-alt-2">
+                    <label class="form-label text-capitalize" asp-for="@Model.CT_ABDOMEN_PLAIN"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.CT_ABDOMEN_PLAIN" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.CT_ABDOMEN_PLAIN" value="No" />No
+                    </label>
+                </div>
+                <div class="col-sm-6 pt-2 bg-alt-1">
+                    <label class="form-label text-capitalize" asp-for="@Model.CT_ABDOMEN_CONTRAST"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.CT_ABDOMEN_CONTRAST" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.CT_ABDOMEN_CONTRAST" value="No" />No
+                    </label>
+                </div>
+
+                @*ninth row*@
+                <div class="col-sm-6 pt-2 bg-alt-1">
+                    <label class="form-label text-capitalize" asp-for="@Model.URINE_ROUTINE_MICROSCOPIC"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.URINE_ROUTINE_MICROSCOPIC" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.URINE_ROUTINE_MICROSCOPIC" value="No" />No
+                    </label>
+                </div>
+                <div class="col-sm-6 pt-2 bg-alt-2">
+                    <label class="form-label text-capitalize" asp-for="@Model.URINE_CULTURE_SESNSITIVITY"></label>
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.URINE_CULTURE_SESNSITIVITY" value="Yes" />Yes
+                    </label>
+
+
+                    <label class="form-label float-right pr-1 mb-2">
+                        <input class="mx-3" type="radio" asp-for="@Model.URINE_CULTURE_SESNSITIVITY" value="No" />No
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card-footer bg-white border-0 mr-3 py-0">
+            <input class="float-right btn btn-outline-warning btn-success text-light py-3" type="submit" asp-action="InvestigationSave" value="Next" />
+        </div>
+    </form>
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+<script>
+    window.onload = function () {
+        var element = document.getElementById("CI");
+        element.classList.add("activelink");
+    };
+</script>

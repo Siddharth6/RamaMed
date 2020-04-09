@@ -1,0 +1,9 @@
+﻿@page :first {
+    margin-top: 50%;
+}
+section {
+    page-break-after: always;
+}
+table {
+    page-break-inside: avoid;
+}

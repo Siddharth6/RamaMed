@@ -1,0 +1,55 @@
+﻿body {
+}
+.outline-warning {
+    border: 1px solid #f0ad4e;
+}
+.outline-info {
+    border: 1px solid #5bc0de;
+}
+.outline-primary {
+    border: 1px solid #0275d8;
+}
+.data-table tr td {
+    padding-left: 25px !important;
+    padding-right: 15px !important;
+    text-transform: capitalize !important;
+}
+.hide{
+    display:none !important;
+}
+#personal-details-table tr td, #personal-details-table tr th{
+    text-align: left !important;
+}
+
+
+@media print{
+    header, footer, nav, form, .btn-print-hide {
+        display: none !important;
+    }
+    table {
+        page-break-inside: avoid;
+    }
+    .chapter {
+        page-break-after: always;
+    }
+    .pagebreak-auto {
+        clear: both;
+        page-break-after: auto;
+    }
+
+    /*#personal-details{
+        justify-content:center !important;
+        height:auto;
+        margin-top:45%;
+    }*/
+    #personal-details .col-6{
+        word-break:normal;
+        padding:50px;
+        margin-top: 35%;
+        border: 5px solid orange;
+        border-radius: 15%;
+    }
+    /*#personal-details > .table-responsive > table{
+        text-align:center;
+    }*/
+}

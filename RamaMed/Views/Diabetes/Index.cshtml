@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "Diabities";
+}
+
+
+@*<a asp-action="Clinical">Clinical Symptoms</a>*@
+
+
+
+<form method="post">
+    <input type="text" name="searchString" required />
+    <input type="submit" asp-action="Index" />
+    <span class="text-danger">@ViewBag.Msg</span>
+</form>

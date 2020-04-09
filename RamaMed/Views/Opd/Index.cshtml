@@ -1,0 +1,69 @@
+﻿@model RamaMed.Models.UserData
+    @{
+    ViewData["Title"] = "Index";
+    }
+
+   <br />
+<div class="card container" style="padding:50px;">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="text-center">
+            <h3 class="em">OPD Registration Form</h3>
+        </div>
+        <div class="form-group">
+            <div class="m-2">
+                <input asp-for="@Model.UHID" placeholder="UHID" class="form-control" />
+                <span asp-validation-for="UHID"></span>
+            </div>
+            <div class="m-2">
+                <input asp-for="@Model.OPDNo" placeholder="OPDNO" class="form-control" />
+                <span asp-validation-for="OPDNo"></span>
+            </div>
+            <div class="m-2">
+                <input asp-for="Name" placeholder="Name" class="form-control" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="m-2">
+                <select asp-for="Dept" class="form-control">
+                    <option value="dept">Select Department</option>
+                    <option value="GMI">General Medicine</option>
+                    <option value="GMI">Ortho Medicine</option>
+                    <option value="GMI">Other Medicine</option>
+                </select>
+                <span asp-validation-for="Dept"></span>
+            </div>
+            <div class="m-2">
+                <select asp-for="Clinic" class="form-control">
+                    <option value="Clinic">Select Clinic</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Basic">Basic Clinic</option>
+                    <option value="Diabetes">Diabetese</option>
+                    <option value="Gastro">Gasto</option>
+                    <option value="Endocrinology">Endocrinology</option>
+                </select>
+                <span asp-validation-for="Clinic"></span>
+            </div>
+            <div class="m-2">
+                <select asp-for="Doctor" class="form-control">
+                    <option value="Doctor">Select Doctor</option>
+                    <option value="Rishav Anurag">Rishav Anurag</option>
+                    <option value="Siddharth">Siddharth</option>
+                    <option value="Gautam Singh">Gautam Singh</option>
+                </select>
+                <span asp-validation-for="Doctor"></span>
+            </div>
+            <div class="m-2">
+                <input asp-for="Date" placeholder="Current Date" type="datetime-local" class="form-control" />
+                <span asp-validation-for="Date"></span>
+            </div>
+            <div class="text-center">
+                <button asp-action="SubmitForm" type="submit" class="btn btn-info">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{ 
+<partial name="_ValidationScriptsPartial" />
+}
+

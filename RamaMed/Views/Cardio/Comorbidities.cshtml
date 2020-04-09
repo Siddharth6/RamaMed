@@ -1,0 +1,234 @@
+﻿@model RamaMed.Models.CardioComorbidity
+@{
+    Layout = "_CardioLayout";
+    ViewData["Title"] = "Cardio Comorbities";
+
+    UserData userdata = ViewBag.userData;
+}
+
+
+    <div class="card">
+        <div class="card-header text-info text-uppercase">
+            <div class="m-0 p-0 pt-1 float-left"><h4>Comorbidities</h4></div>
+
+            <div class="m-0 p-0 float-right"><a class="btn btn-outline-warning" style="text-decoration:none;" asp-action="Personal">Skip</a></div>
+        </div>
+        <form method="post" class="card-body">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="w-100 form-group">
+                <div class="border-bottom">
+                    <div class="row p-3">
+                        <div class="col-sm-3 text-center">
+                            <span class="font-weight-bold">Name : @userdata.Name</span>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <span class="font-weight-bold text-center">Doctor : </span>@userdata.Doctor
+                        </div>
+
+                        <div class="col-sm-3">
+                            <span class="font-weight-bold text-center">UHID : </span>@userdata.UHID
+                            <input asp-for="@Model.UHID" value="@userdata.UHID" hidden />
+                            <span class="text-danger" asp-validation-for="UHID"></span>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <span class="font-weight-bold text-center">OPDNO : </span>@userdata.OPDNo
+                            <input asp-for="@Model.OPDNO" value="@userdata.OPDNo" hidden />
+                            <span class="text-danger" asp-validation-for="OPDNO"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            @{
+                if (Model != null)
+                {
+                    <input asp-for="@Model.ID" hidden />
+                    <input asp-for="@Model.CREATEDATE" hidden />
+                }
+                else
+                {
+                    <div></div>
+                }
+            }
+
+
+
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <label class="form-label text-capitalize col-4">Hypertension</label>
+
+                    <input asp-for="HYPERTENSION_DURATION" class="form-control mb-3 col-3" type="text" placeholder="Duration" />
+
+                    <input asp-for="HYPERTENSION_MEDICATION" class="form-control mb-3 offset-2 col-3" type="text" placeholder="Medication" />
+                </div>
+            </div>
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <label class="form-label text-capitalize col-4">Coronary Artery Disease</label>
+
+                    <input asp-for="CORONARY_ARTERY_DISEASE_DURATION" class="form-control mb-3 col-3" type="text" placeholder="Duration" />
+
+                    <input asp-for="CORONARY_ARTERY_DISEASE_MEDICATION" class="form-control mb-3 offset-2 col-3" type="text" placeholder="Medication" />
+                </div>
+            </div>
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <label class="form-label text-capitalize col-4">COPD</label>
+
+                    <input asp-for="COPD_DURATION" class="form-control mb-3 col-3" type="text" placeholder="Duration" />
+
+                    <input asp-for="COPD_MEDICATION" class="form-control mb-3 offset-2 col-3" type="text" placeholder="Medication" />
+                </div>
+            </div>
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <label class="form-label text-capitalize col-4">Asthma</label>
+
+                    <input asp-for="ASTHMA_DURATION" class="form-control mb-3 col-3" type="text" placeholder="Duration" />
+
+                    <input asp-for="ASTHMA_MEDICATION" class="form-control mb-3 offset-2 col-3" type="text" placeholder="Medication" />
+                </div>
+            </div>
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <label class="form-label text-capitalize col-4">CKD</label>
+
+                    <input asp-for="CKD_DURATION" class="form-control mb-3 col-3" type="text" placeholder="Duration" />
+
+                    <input asp-for="CKD_MEDICATION" class="form-control mb-3 offset-2 col-3" type="text" placeholder="Medication" />
+                </div>
+            </div>
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <label class="form-label text-capitalize col-4">Heart Failure</label>
+
+                    <input asp-for="HEART_FAILURE_DURATION" class="form-control mb-3 col-3" type="text" placeholder="Duration" />
+
+                    <input asp-for="HEART_FAILURE_MEDICATION" class="form-control mb-3 offset-2 col-3" type="text" placeholder="Medication" />
+                </div>
+            </div>
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <label class="form-label text-capitalize col-4">Hypothyroidism</label>
+
+                    <input asp-for="HYPOTHYROIDISM_DURATION" class="form-control mb-3 col-3" type="text" placeholder="Duration" />
+
+                    <input asp-for="HYPOTHYROIDISM_MEDICATION" class="form-control mb-3 offset-2 col-3" type="text" placeholder="Medication" />
+                </div>
+            </div>
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <div class="col-md-4">
+                        <label class="form-label text-capitalize">Pulmonary TB</label>
+                    </div>
+                    <div class="col-md-8 m-0 p-0">
+                        <div class="row">
+                            <label class="col-6 form-label pr-5"><input class="mx-3" asp-for="PULMONARY_TB" type="radio" value="Yes" />Yes</label>
+                            <label class="col-6 form-label pr-5"><input class="mx-3" asp-for="PULMONARY_TB" type="radio" value="No" />No</label>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 py-1 my-1">
+                                <div class="row">
+                                    <label class="form-label col-md-6">Date of Diagnosis</label>
+                                    <input asp-for="PULMONARY_TB_DATE_OF_DIAGNOSIS" class="form-control col-md-6" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 py-1 my-1">
+                                <div class="row">
+                                    <label class="form-label col-md-6">Att Regimen</label>
+                                    <input asp-for="PULMONARY_TB_ATT_REGIMEN" class="form-control col-md-6" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 py-1 my-1">
+                                <div class="row">
+                                    <label class="form-label col-md-6">Date Of Starting</label>
+                                    <input asp-for="PULMONARY_TB_DATE_OF_STARTING" class="form-control col-md-6" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 py-1 my-1">
+                                <div class="row">
+                                    <label class="form-label col-md-6">Date Of Ending</label>
+                                    <input asp-for="PULMONARY_TB_DATE_OF_ENDING" class="form-control col-md-6" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <label class="form-label text-capitalize col-4">HIV</label>
+                    <label class="form-label px-0 mb-3 col-3">
+                        Reactive
+                        <input class="mb-3 ml-3" type="radio" asp-for="HIV" value="Reactive" />
+                    </label>
+                    <label class="form-label px-0 col-3">
+                        Non-Reactive<input class="mb-3 ml-3" type="radio" asp-for="HIV" value="Non-Reactive" />
+                    </label>
+                </div>
+            </div>
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <label class="form-label text-capitalize col-4">HBsAg</label>
+                    <label class="form-label px-0 mb-3 col-3">
+                        Reactive<input class="mb-3 ml-3" type="radio" asp-for="HBSAG" value="Reactive" />
+                    </label>
+                    <label class="form-label px-0 col-3">
+                        Non-Reactive<input class="mb-3 ml-3" type="radio" asp-for="HBSAG" value="Non-Reactive" />
+                    </label>
+                </div>
+            </div>
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <label class="form-label text-capitalize col-4">Anti HCV</label>
+                    <label class="form-label px-0 mb-3 col-3">
+                        Reactive<input class="mb-3 ml-3" type="radio" asp-for="ANTI_HCV" value="Reactive" />
+                    </label>
+                    <label class="form-label px-0 col-3">
+                        Non-Reactive<input class="mb-3 ml-3" type="radio" asp-for="ANTI_HCV" value="Non-Reactive" />
+                    </label>
+                </div>
+            </div>
+            <div class="px-5 py-2">
+                <div class="row border-bottom">
+                    <label class="form-label text-capitalize col-4">Diabetes Mellitus</label>
+                    <label class="form-label px-0 mb-3 col-3">
+                        Present<input class="mb-3 ml-3" type="radio" asp-for="DIABETES_MELLITUS" value="Present" />
+                    </label>
+                    <label class="form-label px-0 col-3">
+                        Not<input class="mb-3 ml-3" type="radio" asp-for="DIABETES_MELLITUS" value="not" />
+                    </label>
+                </div>
+            </div>
+            <div class="card-footer bg-white border-0 mt-0 pt-0">
+                @*<a class="ml-5 btn btn-outline-warning btn-danger text-white py-3" style="text-decoration:none" asp-action="Clinical">Previous</a>*@
+                @*<a class="ml-1 btn btn-outline-warning btn-danger text-white py-3" style="text-decoration:none" asp-action="Personal">Skip</a>*@
+                @*<input class="mr-5 float-right btn btn-outline-warning btn-success text-light py-3" type="submit" asp-action="ComorbiditySave" value="Next" />*@
+                <div class="card-footer bg-white border-0 mr-3 py-0">
+                    <input class="float-right btn btn-outline-warning btn-success text-light py-3" type="submit" asp-action="ComorbiditySave" value="Next" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+<script>
+    window.onload = function () {
+        var element = document.getElementById("CD");
+        element.classList.add("activelink");
+    };
+</script>

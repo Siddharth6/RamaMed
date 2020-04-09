@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "Gasto";
+}
+
+
+@*<a asp-action="Clinical">Clinical Symptoms</a>*@
+
+
+<div class="">
+    <a href="#newpatient" class="btn btn-link">New Patient</a>
+</div>
+
+
+<div class="recent">
+    
+</div>
+
+
+<div id="newpatient">
+    <form method="post">
+        <input type="text" name="searchString" required />
+        <input type="submit" asp-action="Index" />
+        <span class="text-danger">@ViewBag.Msg</span>
+    </form>
+</div>

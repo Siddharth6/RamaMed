@@ -1,0 +1,168 @@
+﻿@model RamaMed.Models.ViewModels.UserViewModel
+@{
+    Layout = null;
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Department</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        body {
+            background: url('../images/back.png') no-repeat 0 fixed;
+            background-size: cover;
+        }
+
+        .left {
+            height: 100%;
+            left: 0;
+            width: 50%;
+            position: absolute;
+        }
+
+        .verticalcnter {
+            background-color: rgba(255, 255, 255, 0.8);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            padding: 25px;
+            box-shadow: 0 4px 20px 0 rgba(0,0,0,0.9);
+            border-radius: 15px;
+            transform: translate(-50%, -50%);
+        }
+
+
+        @@media screen and (max-width: 768px) {
+            .left {
+                width: 100%
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="left">
+        <div class="verticalcnter">
+
+            @if (TempData["validationmessage"] != null)
+            {
+                <div class="text-danger"><strong>Alert!</strong> @TempData["validationmessage"] </div>
+            }
+
+
+            <div class="loginform" style="min-width:300px;max-width:400px;">
+                <form class="container form-group" method="POST">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <br>
+                        <label asp-for="@Model.LoginViewModel.UserId"></label>
+                        <input class="form-control" asp-for="@Model.LoginViewModel.UserId">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.LoginViewModel.Password"></label>
+                        <input type="password" class="form-control" asp-for="@Model.LoginViewModel.Password">
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" asp-action="Validate" asp-controller="Home" value="Login" class="btn btn-success btn-block" />
+                        <button class="btn btn-outline-success btn-block" id="register-btn">Don't have account</button>
+                    </div>
+                </form>
+            </div>
+            <div class="signupform" style="display:none; min-width:300px;max-width:400px;">
+                <form asp-action="Register" asp-controller="Home" method="post">
+                    <div class="row">
+                        <div asp-validation-summary="All" class="col-12 text-sm-left text-danger"></div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.RegistrationViewModel.Name"></label>
+                                <input asp-for="@Model.RegistrationViewModel.Name" class="form-control" value="@{ if (TempData["Name"] != null) { @TempData["Name"]; } }" />
+                                @*<span asp-validation-for="@Model.RegistrationViewModel.Name"></span>*@
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.RegistrationViewModel.UserId"></label>
+                                <input asp-for="@Model.RegistrationViewModel.UserId" class="form-control" value="@{ if (TempData["UserId"] != null) { @TempData["UserId"]; } }">
+                            </div>
+                            @*<span asp-validation-for="@Model.RegistrationViewModel.UserId"></span>*@
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.RegistrationViewModel.Email'"></label>
+                                <input asp-for="@Model.RegistrationViewModel.Email" class="form-control" value="@{ if (TempData["Email"] != null) { @TempData["Email"]; } }">
+                            </div>
+                            @*<span asp-validation-for="@Model.RegistrationViewModel.Email"></span>*@
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.RegistrationViewModel.Mobile"></label>
+                                <input asp-for="@Model.RegistrationViewModel.Mobile" class="form-control" value="@{ if (TempData["Mobile"] != null) { @TempData["Mobile"]; } }">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.RegistrationViewModel.Role"></label>
+                                <input asp-for="@Model.RegistrationViewModel.Role" class="form-control" value="@{ if (TempData["Role"] != null) { @TempData["Role"]; } }">
+                            </div>
+                            @*<span asp-validation-for="@Model.RegistrationViewModel.Role"></span>*@
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.RegistrationViewModel.Password"></label>
+                                <input type="password" asp-for="@Model.RegistrationViewModel.Password" class="form-control">
+                            </div>
+                            @*<span asp-validation-for="@Model.RegistrationViewModel.Password"></span>*@
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.RegistrationViewModel.ConfirmPassword"></label>
+                                <input type="password" asp-for="@Model.RegistrationViewModel.ConfirmPassword" class="form-control">
+                            </div>
+                            @*<span asp-validation-for="@Model.RegistrationViewModel.ConfirmPassword"></span>*@
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" value="Register" class="btn btn-info btn-block">
+                        <button class="btn btn-outline-info btn-block" id="login-btn">Login</button>
+
+                        <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @*@RenderSection("Scripts", required: false)*@
+
+
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+
+        $(document).ready(function(){
+            $("#register-btn").click(function (e) {
+                e.preventDefault();
+                $(".loginform").hide(400);
+                $(".signupform").show(200);
+            })
+
+            $("#login-btn").click(function (e) {
+                e.preventDefault();
+                $(".signupform").hide(400);
+                $(".loginform").show(200);
+            })
+        });
+
+    </script>
+</body>
+</html>
