@@ -79,5 +79,51 @@ namespace RamaMed.Data
         public DbSet<DiabetesInvestigation> DiabetesInvestigations { get; set; }
 
         public DbSet<DiabetesOther> DiabetesOthers { get; set; }
+        
+        //Endocrinology
+        public DbSet<EndocrinoClinicalSymptom> EndocrinoClinicalSymptoms { get; set; }
+
+        public DbSet<EndocrinoComorbidity> EndocrinoComorbidities { get; set; }
+
+        public DbSet<EndocrinoPersonalHabit> EndocrinoPersonalHabits { get; set; }
+
+        public DbSet<EndocrinoGeneralExamination> EndocrinoGeneralExaminations { get; set; }
+
+        public DbSet<EndocrinoCNS> EndocrinoCNSs { get; set; }
+
+        public DbSet<EndocrinoRespSystem> EndocrinoRespSystems { get; set; }
+
+        public DbSet<EndocrinoAbdExam> EndocrinoAbdExams { get; set; }
+
+
+        public DbSet<EndocrinoCVS> EndocrinoCVSs { get; set; }
+
+        public DbSet<EndocrinoInvestigation> EndocrinoInvestigations { get; set; }
+
+        public DbSet<EndocrinoOther> EndocrinoOthers { get; set; }
+
+
+        //BasicGMI
+
+        public DbSet<BasicClinicalSymptom> BasicClinicalSymptoms { get; set; }
+
+        public DbSet<BasicComorbidity> BasicComorbidities { get; set; }
+
+        public DbSet<BasicPersonal> BasicPersonals { get; set; }
+
+        public DbSet<BasicGeneralExamination> BasicGeneralExaminations { get; set; }
+
+        public DbSet<BasicCNS> BasicCNSs { get; set; }
+
+        public DbSet<BasicRespSystem> BasicRespSystems { get; set; }
+
+        public DbSet<BasicAbdExam> BasicAbdExams { get; set; }
+
+        public DbSet<BasicCVS> BasicCVSs { get; set; }
+
+        public DbSet<BasicInvestigation> BasicInvestigations { get; set; }
+
+        public DbSet<BasicOther> BasicOthers { get; set; }
+
     }
 }
