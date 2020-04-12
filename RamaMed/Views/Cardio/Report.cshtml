@@ -1,22 +1,22 @@
-@model RamaMed.Models.ViewModels.Gastro
+﻿@model RamaMed.Models.ViewModels.Cardio
 @{
-    Layout = "_GastroLayout";
+    Layout = "_CardioLayout";
     ViewData["Title"] = "Report";
 }
 
 
 
 @{
-    GastroClinicalSymptom Clinical = Model.GastroClinicalSymptom;
-    GastroComorbidity Comorbidites = Model.GastroComorbidity;
-    GastroPersonalHabit Habits = Model.GastroPersonalHabit;
-    GastroGeneralExamination GenExam = Model.GastroGeneralExamination;
-    GastroCNS Cns = Model.GastroCNS;
-    GastroRespSystem Resp = Model.GastroRespSystem;
-    GastroAbdExam Abd = Model.GastroAbdExam;
-    GastroCVS Cvs = Model.GastroCVS;
-    GastroInvestigation Inv = Model.GastroInvestigation;
-    GastroOther Other = Model.GastroOther;
+    CardioClinicalSymptom Clinical = Model.CardioClinicalSymptom;
+    CardioComorbidity Comorbidites = Model.CardioComorbidity;
+    CardioPersonal Habits = Model.CardioPersonal;
+    CardioGeneralExamination GenExam = Model.CardioGeneralExamination;
+    CardioCNS Cns = Model.CardioCNS;
+    CardioRespSystem Resp = Model.CardioRespSystem;
+    CardioAbdExam Abd = Model.CardioAbdExam;
+    CardioCVS Cvs = Model.CardioCVS;
+    CardioInvestigation Inv = Model.CardioInvestigation;
+    CardioOther Other = Model.CardioOther;
 }
 
 <div class="text-right sticky-top">
@@ -81,52 +81,40 @@
                             <th>Duration</th>
                         </tr>
                         <tr>
-                            <td>Nausea</td>
-                            <td>@Clinical.NAUSEA_DURATION</td>
+                            <td>BREATHLESNESS</td>
+                            <td>@Clinical.BREATHLESNESS_DURATION</td>
                         </tr>
                         <tr>
-                            <td>Vomiting</td>
-                            <td>@Clinical.VOMITING_DURATION</td>
+                            <td>NYHA CLASS</td>
+                            <td>@Clinical.NYHA_CLASS_DURATION</td>
                         </tr>
                         <tr>
-                            <td>Altered bowel habits</td>
-                            <td>@Clinical.ALTERED_BOWEL_HABITS_DURATION</td>
+                            <td>PND</td>
+                            <td>@Clinical.PND_DURATION</td>
                         </tr>
                         <tr>
-                            <td>Malena</td>
-                            <td>@Clinical.MALENA_DURATION</td>
+                            <td>ORTHOPNOEA</td>
+                            <td>@Clinical.ORTHOPNOEA_DURATION</td>
                         </tr>
                         <tr>
-                            <td>Dyspesia</td>
-                            <td>@Clinical.DYSPESIA_DURATION</td>
+                            <td>PLATYPNOEA</td>
+                            <td>@Clinical.PLATYPNOEA_DURATION</td>
                         </tr>
                         <tr>
-                            <td>Fever</td>
-                            <td>@Clinical.FEVER_DURATION</td>
+                            <td>CHEST PAIN</td>
+                            <td>@Clinical.CHEST_PAIN_DURATION</td>
                         </tr>
                         <tr>
-                            <td>Weight loss</td>
-                            <td>@Clinical.WEIGHT_LOSS_DURATION</td>
+                            <td>SYNCOPE</td>
+                            <td>@Clinical.SYNCOPE_DURATION</td>
                         </tr>
                         <tr>
-                            <td>Icterus</td>
-                            <td>@Clinical.ICTERUS_DURATION</td>
+                            <td>COUGH</td>
+                            <td>@Clinical.COUGH_DURATION</td>
                         </tr>
                         <tr>
-                            <td>Abdominal distension</td>
-                            <td>@Clinical.ABDOMINAL_DISTENSION_DURATION</td>
-                        </tr>
-                        <tr>
-                            <td>Abdominal pain</td>
+                            <td>ABDOMINAL PAIN</td>
                             <td>@Clinical.ABDOMINAL_PAIN_DURATION</td>
-                        </tr>
-                        <tr>
-                            <td>Easy fatiguability</td>
-                            <td>@Clinical.EASY_FATIGUABILITY_DURATION</td>
-                        </tr>
-                        <tr>
-                            <td>Breathelessness</td>
-                            <td>@Clinical.BREATHELESSNESS_DURATION</td>
                         </tr>
                     </table>
                     <table id="clinical-table2" class="data-table outline-warning table col-lg-6">
@@ -135,55 +123,40 @@
                             <th>Duration</th>
                         </tr>
                         <tr class="col-md-6">
-                            <td>Involuntary movements</td>
-                            <td>@Clinical.INVOLUNTARY_MOVEMENTS_DURATION</td>
+                            <td>PALPITATION</td>
+                            <td>@Clinical.PALPITATION_DURATION</td>
+                        </tr>
+                        <tr class="col-md-6">
+                            <td>PEDAL EDEMA</td>
+                            <td>@Clinical.PEDAL_EDEMA_DURATION</td>
+                        </tr>
+                        <tr class="col-md-6">
+                            <td>SPUTUM | HAE</td>
+                            <td>@Clinical.SPUTUM_HAE_DURATION</td>
                         </tr>
                         <tr>
-                            <td>Altered sensorium</td>
-                            <td>@Clinical.ALTERED_SENSORIUM_DURATION</td>
+                            <td>ABDOMINAL DISTENSION</td>
+                            <td>@Clinical.ABDOMINAL_DISTENSION_DURATION</td>
+                        </tr>
+                        <tr class="col-md-6">
+                            <td>Dyspesia</td>
+                            <td>@Clinical.DYSPESIA_DURATION</td>
                         </tr>
                         <tr>
-                            <td>Personality changes</td>
-                            <td>@Clinical.PERSONALITY_CHANGES_DURATION</td>
+                            <td>NOCTURIA</td>
+                            <td>@Clinical.NOCTURIA_DURATION</td>
                         </tr>
                         <tr>
-                            <td>Altered sleep pattern</td>
-                            <td>@Clinical.ALTERED_SLEEP_PATTERN_DURATION</td>
+                            <td>NAUSEA / VOMITING</td>
+                            <td>@Clinical.NAUSEA_VOMITING_DURATION</td>
                         </tr>
                         <tr>
-                            <td>Hematochezia</td>
-                            <td>@Clinical.HEMATOCHEZIA_DURATION</td>
-                        </tr>
-                        <tr>
-                            <td>Oliguria</td>
+                            <td>OLIGURIA</td>
                             <td>@Clinical.OLIGURIA_DURATION</td>
                         </tr>
                         <tr>
-                            <td>Dysphagia</td>
-                            <td>@Clinical.DYSPHAGIA_DURATION</td>
-                        </tr>
-                        <tr>
-                            <td>Odynophagia</td>
-                            <td>@Clinical.ODYNOPHAGIA_DURATION</td>
-                        </tr>
-                        <tr>
-                            <td>Facial puffiness</td>
-                            <td>@Clinical.FACIAL_PUFFINESS_DURATION</td>
-                        </tr>
-                        <tr>
-                            <td>Swelling of both legs</td>
-                            <td>@Clinical.SWELLING_OF_BOTH_LEGS_DURATION</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Yellowish discoloration
-                                of urine
-                            </td>
-                            <td>@Clinical.YELLOWISH_DISCOLORATION_OF_URINE_DURATION</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td>HOARSENESS OF VOICE</td>
+                            <td>@Clinical.HOARSENESS_OF_VOICE_DURATION</td>
                         </tr>
                     </table>
                 </div>
@@ -206,12 +179,12 @@
                             <th>Medication</th>
                         </tr>
                         <tr>
-                            <td>Hypertension</td>
+                            <td>HYPERTENSION</td>
                             <td>@Comorbidites.HYPERTENSION_DURATION</td>
                             <td>@Comorbidites.HYPERTENSION_MEDICATION</td>
                         </tr>
                         <tr>
-                            <td>Coronary Artery Disease</td>
+                            <td>CORONARY ARTERY DISEASE</td>
                             <td>@Comorbidites.CORONARY_ARTERY_DISEASE_DURATION</td>
                             <td>@Comorbidites.CORONARY_ARTERY_DISEASE_MEDICATION</td>
                         </tr>
@@ -221,7 +194,7 @@
                             <td>@Comorbidites.COPD_MEDICATION</td>
                         </tr>
                         <tr>
-                            <td>Asthma</td>
+                            <td>ASTHMA</td>
                             <td>@Comorbidites.ASTHMA_DURATION</td>
                             <td>@Comorbidites.ASTHMA_MEDICATION</td>
                         </tr>
@@ -231,12 +204,12 @@
                             <td>@Comorbidites.CKD_MEDICATION</td>
                         </tr>
                         <tr>
-                            <td>Heart Failure</td>
+                            <td>HEART FAILURE</td>
                             <td>@Comorbidites.HEART_FAILURE_DURATION</td>
                             <td>@Comorbidites.HEART_FAILURE_MEDICATION</td>
                         </tr>
                         <tr>
-                            <td>Hypothyroidism</td>
+                            <td>HYPOTHYROIDISM</td>
                             <td>@Comorbidites.HYPOTHYROIDISM_DURATION</td>
                             <td>@Comorbidites.HYPOTHYROIDISM_MEDICATION</td>
                         </tr>
@@ -244,22 +217,22 @@
                     <div class="data-table outline-info px-3">
                         <div class="row p-3 border-bottom">
                             <div class="col-md-4">
-                                Pulmonary TB
+                                PULMONARY TB
                             </div>
                             <div class="col-md-8">
                                 @Comorbidites.PULMONARY_TB
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Date of diagnosis:@Comorbidites.PULMONARY_TB_DATE_OF_DIAGNOSIS
+                                        DATE OF DIAGNOSIS:@Comorbidites.PULMONARY_TB_DATE_OF_DIAGNOSIS
                                     </div>
                                     <div class="col-md-6">
-                                        ATT Regimen:@Comorbidites.PULMONARY_TB_ATT_REGIMEN
+                                        ATT REGIMEN:@Comorbidites.PULMONARY_TB_ATT_REGIMEN
                                     </div>
                                     <div class="col-md-6">
-                                        Date of starting:@Comorbidites.PULMONARY_TB_DATE_OF_STARTING
+                                        DATE OF STARTING:@Comorbidites.PULMONARY_TB_DATE_OF_STARTING
                                     </div>
                                     <div class="col-md-6">
-                                        Date of ending:@Comorbidites.PULMONARY_TB_DATE_OF_ENDING
+                                        DATE OF ENDING:@Comorbidites.PULMONARY_TB_DATE_OF_ENDING
                                     </div>
                                 </div>
                             </div>
@@ -302,7 +275,7 @@
 
                         <div class="row p-3 border-bottom">
                             <div class="col-md-4">
-                                Anti HCV
+                                ANTI HCV
                             </div>
                             <div class="col-md-8">
                                 @{
@@ -320,7 +293,7 @@
 
                         <div class="row p-3 border-bottom">
                             <div class="col-md-4">
-                                Diabetes Mellitus
+                                DIABETES MELLITUS
                             </div>
                             <div class="col-md-8">
                                 @{
@@ -546,7 +519,7 @@
                             <span class="d-inline-block border mr-2" style="width:50px !important;"><b class="px-2 mr-1 h-100 bg-dark text-light">E</b>@Cns.HIGHER_FUNCTIONS_UNCONSCIOUS_E</span>
                             <span class="d-inline-block border mr-2" style="width:50px !important;"><b class="px-2 mr-1 h-100 bg-dark text-light">V</b>@Cns.HIGHER_FUNCTIONS_UNCONSCIOUS_V</span>
                             <span class="d-inline-block border mr-2" style="width:50px !important;"><b class="px-2 mr-1 bg-dark text-light">M</b>@Cns.HIGHER_FUNCTIONS_UNCONSCIOUS_M</span>
-                        </div>
+</div>
                     </div>
 
                     <div class="row p-3 border-bottom">
@@ -618,6 +591,11 @@
                     </div>
 
                     <div class="row p-3 border-bottom">
+                        <div class="col-6">Involutionary Movements</div>
+                        <div class="col-6">@Cns.MOTOR_SYSTEM_INVOLUNTRY_MOVEMENTS</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
                         <div class="col-6">Reflexes</div>
                         <div class="col-6">@Cns.MOTOR_SYSTEM_REFLEXES</div>
                     </div>
@@ -666,10 +644,6 @@
                         <div class="col-6">@Cns.SIGNS_OF_MENINGIAL_IRRITATION</div>
                     </div>
 
-                    <div class="row p-3 border-bottom">
-                        <div class="col-6">Pupil</div>
-                        <div class="col-6">@Cns.PUPIL</div>
-                    </div>
 
                 </div>
             </div>
@@ -736,6 +710,11 @@
                     </div>
 
                     <div class="row p-3 border-bottom">
+                        <div class="col-6">Percussion Note</div>
+                        <div class="col-6">@Resp.PERCUSSION_NOTE</div>
+                    </div>
+
+                    <div class="row p-3 border-bottom">
                         <div class="col-6">Bronchial Breath Sounds</div>
                         <div class="col-6">@Resp.BRONCHIAL_BREATH_SOUNDS</div>
                     </div>
@@ -749,7 +728,7 @@
     {
         <section id="Abd-exams" class="chapter my-2">
             <div class="card-header bg-warning text-white text-center">
-                <h5>SYSTEMATIC EXAMINATION(Respiratory System)</h5>
+                <h5>SYSTEMATIC EXAMINATION(Abdomen Examination)</h5>
             </div>
             <div class="p-3">
                 <div class="data-table outline-warning px-3">
@@ -900,7 +879,7 @@
 
                     <div class="row p-3 border-bottom">
                         <div class="col-6">Pericardial Rub</div>
-                        <div class="col-6">@Cvs.HEART_SOUNDS_PERICARDIAL_RUB</div>
+                        <div class="col-6">@Cvs.PERICARDIAL_RUB</div>
                     </div>
 
                     <div class="row p-3 border-bottom">
@@ -1035,5 +1014,5 @@
         document.getElementById("printbtn").click();
         document.getElementById("menu-btn").click();
     };
-    
+
 </script>

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RamaMed.Data;
 using RamaMed.Models;
+using RamaMed.Models.ViewModels;
 
 namespace RamaMed.Controllers
 {
@@ -643,6 +644,33 @@ namespace RamaMed.Controllers
                 return RedirectToAction("Report");
             }
             return RedirectToAction("Other");
+        }
+        #endregion
+
+
+        #region report
+        public IActionResult Report()
+        {
+            string OPDNO = HttpContext.Session.GetString("Cardio_OPDNO");
+            if (OPDNO != null && OPDNO != String.Empty)
+            {
+                Cardio data = new Cardio
+                {
+                    UserData = _db.UserDatas.Where(c => c.OPDNo == OPDNO).FirstOrDefault(),
+                    CardioClinicalSymptom = _gmidb.CardioClinicalSymptoms.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    CardioComorbidity = _gmidb.CardioComorbidities.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    CardioPersonal = _gmidb.CardioPersonals.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    CardioGeneralExamination = _gmidb.CardioGeneralExaminations.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    CardioCNS = _gmidb.CardioCNSs.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    CardioRespSystem = _gmidb.CardioRespSystems.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    CardioAbdExam = _gmidb.CardioAbdExams.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    CardioCVS = _gmidb.CardioCVSs.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    CardioInvestigation = _gmidb.CardioInvestigations.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    CardioOther = _gmidb.CardioOthers.Where(c => c.OPDNO == OPDNO).FirstOrDefault()
+                };
+                return View(data);
+            }
+            return RedirectToAction("Index", new { res = "First enter OPDNO" });
         }
         #endregion
     }
