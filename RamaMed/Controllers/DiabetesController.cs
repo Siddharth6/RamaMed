@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RamaMed.Data;
 using RamaMed.Models;
+using RamaMed.Models.ViewModels;
 
 namespace RamaMed.Controllers
 {
@@ -15,8 +16,8 @@ namespace RamaMed.Controllers
         private readonly ApplicationDbContext _db;
         private readonly GMIAllDbContext _gmidb;
 
-        [BindProperty]
-        public DiabetesClinic DiabetesClinic { get; set; }
+        //[BindProperty]
+        //public DiabetesClinic DiabetesClinic { get; set; }
 
         public DiabetesController(ApplicationDbContext db, GMIAllDbContext gmidb)
         {
@@ -71,7 +72,7 @@ namespace RamaMed.Controllers
         #region personal details
         public ActionResult Detail()
         {
-            string OPDNO = HttpContext.Session.GetString("OPDNO");
+            string OPDNO = HttpContext.Session.GetString("Diabetes_OPDNO");
             if (OPDNO != null && OPDNO != String.Empty)
             {
                 //string OPDNO = TempData["OPDNO"] as string;
@@ -266,7 +267,7 @@ namespace RamaMed.Controllers
         #region General Examinations
         public IActionResult GeneralExam()
         {
-            string OPDNO = HttpContext.Session.GetString("Cardio_OPDNO");
+            string OPDNO = HttpContext.Session.GetString("Diabetes_OPDNO");
             if (OPDNO != null && OPDNO != String.Empty)
             {
                 //string OPDNO = TempData["OPDNO"] as string;
@@ -324,7 +325,7 @@ namespace RamaMed.Controllers
         #region CNS
         public IActionResult CNS()
         {
-            string OPDNO = HttpContext.Session.GetString("Cardio_OPDNO");
+            string OPDNO = HttpContext.Session.GetString("Diabetes_OPDNO");
             if (OPDNO != null && OPDNO != String.Empty)
             {
                 UserData userdata = _db.UserDatas
@@ -379,7 +380,7 @@ namespace RamaMed.Controllers
         #region RespSys
         public IActionResult RespSys()
         {
-            string OPDNO = HttpContext.Session.GetString("Cardio_OPDNO");
+            string OPDNO = HttpContext.Session.GetString("Diabetes_OPDNO");
             if (OPDNO != null && OPDNO != String.Empty)
             {
                 UserData userdata = _db.UserDatas
@@ -433,7 +434,7 @@ namespace RamaMed.Controllers
         #region AbdExam
         public IActionResult AbdExam()
         {
-            string OPDNO = HttpContext.Session.GetString("Cardio_OPDNO");
+            string OPDNO = HttpContext.Session.GetString("Diabetes_OPDNO");
             if (OPDNO != null && OPDNO != String.Empty)
             {
                 UserData userdata = _db.UserDatas
@@ -441,13 +442,13 @@ namespace RamaMed.Controllers
                                .FirstOrDefault();
                 ViewBag.userData = userdata;
 
-                bool OpdExists = _gmidb.CardioAbdExams.Any(m => m.OPDNO == OPDNO);
+                bool OpdExists = _gmidb.DiabetesAbdExams.Any(m => m.OPDNO == OPDNO);
                 if (OpdExists)
                 {
-                    int Id = (from s in _gmidb.CardioAbdExams
+                    int Id = (from s in _gmidb.DiabetesAbdExams
                               where s.OPDNO == OPDNO
                               select s.ID).First();
-                    var data = _gmidb.CardioAbdExams.Find(Id);
+                    var data = _gmidb.DiabetesAbdExams.Find(Id);
                     return View(data);
                 }
 
@@ -457,7 +458,7 @@ namespace RamaMed.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public IActionResult AbdExamSave(int? id, CardioAbdExam model)
+        public IActionResult AbdExamSave(int? id, DiabetesAbdExam model)
         {
             //var opd = model.OPDNO;
             //bool OpdExists = _gmidb.GastroAbdExams.Any(m => m.OPDNO == opd);
@@ -475,7 +476,7 @@ namespace RamaMed.Controllers
                     return RedirectToAction("CVS");
                 }
                 model.CREATEDATE = DateTime.Now;
-                _gmidb.CardioAbdExams.Add(model);
+                _gmidb.DiabetesAbdExams.Add(model);
                 _gmidb.SaveChanges();
                 return RedirectToAction("CVS");
             }
@@ -487,7 +488,7 @@ namespace RamaMed.Controllers
         #region CVS
         public IActionResult CVS()
         {
-            string OPDNO = HttpContext.Session.GetString("Cardio_OPDNO");
+            string OPDNO = HttpContext.Session.GetString("Diabetes_OPDNO");
             if (OPDNO != null && OPDNO != String.Empty)
             {
                 UserData userdata = _db.UserDatas
@@ -496,13 +497,13 @@ namespace RamaMed.Controllers
                 ViewBag.userData = userdata;
 
 
-                bool OpdExists = _gmidb.CardioCVSs.Any(m => m.OPDNO == OPDNO);
+                bool OpdExists = _gmidb.DiabetesCVSs.Any(m => m.OPDNO == OPDNO);
                 if (OpdExists)
                 {
-                    int Id = (from s in _gmidb.CardioCVSs
+                    int Id = (from s in _gmidb.DiabetesCVSs
                               where s.OPDNO == OPDNO
                               select s.ID).First();
-                    var data = _gmidb.CardioCVSs.Find(Id);
+                    var data = _gmidb.DiabetesCVSs.Find(Id);
                     return View(data);
                 }
 
@@ -512,7 +513,7 @@ namespace RamaMed.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public IActionResult CVS_Save(int? id, CardioCVS model)
+        public IActionResult CVS_Save(int? id, DiabetesCVS model)
         {
             if (ModelState.IsValid)
             {
@@ -524,7 +525,7 @@ namespace RamaMed.Controllers
                     return RedirectToAction("Investigations");
                 }
                 model.CREATEDATE = DateTime.Now;
-                _gmidb.CardioCVSs.Add(model);
+                _gmidb.DiabetesCVSs.Add(model);
                 _gmidb.SaveChanges();
                 return RedirectToAction("Investigations");
             }
@@ -536,7 +537,7 @@ namespace RamaMed.Controllers
         #region Investigations
         public IActionResult Investigations()
         {
-            string OPDNO = HttpContext.Session.GetString("Cardio_OPDNO");
+            string OPDNO = HttpContext.Session.GetString("Diabetes_OPDNO");
             if (OPDNO != null && OPDNO != String.Empty)
             {
                 UserData userdata = _db.UserDatas
@@ -544,13 +545,13 @@ namespace RamaMed.Controllers
                                .FirstOrDefault();
                 ViewBag.userData = userdata;
 
-                bool OpdExists = _gmidb.CardioInvestigations.Any(m => m.OPDNO == OPDNO);
+                bool OpdExists = _gmidb.DiabetesInvestigations.Any(m => m.OPDNO == OPDNO);
                 if (OpdExists)
                 {
-                    int Id = (from s in _gmidb.CardioInvestigations
+                    int Id = (from s in _gmidb.DiabetesInvestigations
                               where s.OPDNO == OPDNO
                               select s.ID).First();
-                    var data = _gmidb.CardioInvestigations.Find(Id);
+                    var data = _gmidb.DiabetesInvestigations.Find(Id);
                     return View(data);
                 }
                 return View();
@@ -559,7 +560,7 @@ namespace RamaMed.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public IActionResult InvestigationSave(int? id, CardioInvestigation model)
+        public IActionResult InvestigationSave(int? id, DiabetesInvestigation model)
         {
             //var opd = model.OPDNO;
             //bool OpdExists = _gmidb.GastroInvestigations.Any(m => m.OPDNO == opd);
@@ -577,7 +578,7 @@ namespace RamaMed.Controllers
                     return RedirectToAction("Other");
                 }
                 model.CREATEDATE = DateTime.Now;
-                _gmidb.CardioInvestigations.Add(model);
+                _gmidb.DiabetesInvestigations.Add(model);
                 _gmidb.SaveChanges();
                 return RedirectToAction("Other");
             }
@@ -589,7 +590,7 @@ namespace RamaMed.Controllers
         #region Others
         public IActionResult Other()
         {
-            string OPDNO = HttpContext.Session.GetString("Cardio_OPDNO");
+            string OPDNO = HttpContext.Session.GetString("Diabetes_OPDNO");
             if (OPDNO != null && OPDNO != String.Empty)
             {
                 UserData userdata = _db.UserDatas
@@ -636,6 +637,32 @@ namespace RamaMed.Controllers
                 return RedirectToAction("Report");
             }
             return RedirectToAction("Other");
+        }
+        #endregion
+
+        #region Report
+        public IActionResult Report()
+        {
+            string OPDNO = HttpContext.Session.GetString("Diabetes_OPDNO");
+            if (OPDNO != null && OPDNO != String.Empty)
+            {
+                Diabetes data = new Diabetes
+                {
+                    UserData = _db.UserDatas.Where(c => c.OPDNo == OPDNO).FirstOrDefault(),
+                    DiabetesClinicalSymptom = _gmidb.DiabetesClinicalSymptoms.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    DiabetesComorbidity = _gmidb.DiabetesComorbidities.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    DiabetesPersonalHabit = _gmidb.DiabetesPersonalHabits.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    DiabetesGeneralExamination = _gmidb.DiabetesGeneralExaminations.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    DiabetesCNS = _gmidb.DiabetesCNSs.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    DiabetesRespSystem = _gmidb.DiabetesRespSystems.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    DiabetesAbdExam = _gmidb.DiabetesAbdExams.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    DiabetesCVS = _gmidb.DiabetesCVSs.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    DiabetesInvestigation = _gmidb.DiabetesInvestigations.Where(c => c.OPDNO == OPDNO).FirstOrDefault(),
+                    DiabetesOther = _gmidb.DiabetesOthers.Where(c => c.OPDNO == OPDNO).FirstOrDefault()
+                };
+                return View(data);
+            }
+            return RedirectToAction("Index", new { res = "First enter OPDNO" });
         }
         #endregion
     }
