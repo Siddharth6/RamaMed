@@ -18,7 +18,6 @@ namespace RamaMed.Models
         [Required]
         public string OPDNO { get; set; }
 
-
         public Nullable<int> HEART_RATE { get; set; }
 
         public string RHYTHM { get; set; }
