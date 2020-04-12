@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <form method="post">
+        <input type="text" name="searchString" required />
+        <input type="submit" asp-action="Index" />
+        <span class="text-danger">@ViewBag.Msg</span>
+    </form>
+
