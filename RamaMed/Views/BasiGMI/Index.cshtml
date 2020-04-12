@@ -1,27 +1,19 @@
-﻿@model IEnumerable<RamaMed.Models.BasicClinic>
+﻿
 @{
-    ViewData["Title"] = "Basic Clinic";
+    ViewData["Title"] = "Cardio";
 }
 
 
-<div class="card">
-    <div class="card-header text-capitalize bg-info text-center text-light"><h3>Clinical symptoms</h3></div>
-    <form method="post" class="card-body">
-        <div id="form-content">
-
-        </div>
-        <div class="card-footer text-right">
-            <input class="btn btn-outline-info btn-primary" type="submit" asp-action="ClinicalData" />
-        </div>
-    </form>
-</div>
+@*<a asp-action="Clinical">Clinical Symptoms</a>*@
 
 
-@{var stringArray = @Html.Raw(Json.Serialize(Model));}
 
-<script>
-    var formitem = @stringArray;
-    console.log(formitem);
-</script>
+<form method="post">
+    <input type="text" name="searchString" required />
+    <input type="submit" asp-action="Index" />
+    <span class="text-danger">@ViewBag.Msg</span>
+</form>
 
-<script src="~/js/clinical.js"></script>
+
+
+
