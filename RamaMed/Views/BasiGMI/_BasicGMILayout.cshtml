@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/nav.css" />
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script defer src="~/font-awesome/js/all.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h4>Rama Medical</h4>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li><h4 class="text-center">GMI Clinic</h4></li>
+                <li>
+                    <a id="PD" class="text-center bg-sidelink-1" asp-action="Detail"><div class="m-3"><span class="linklogo logo-1">PD</span></div>Personel Details</a>
+                </li>
+                <li>
+                    <a id="CS" class="text-center bg-sidelink-2" asp-action="Clinical"><div class="m-3"><span class="linklogo logo-2">CS</span></div>Clinical Symptoms</a>
+                </li>
+                <li>
+                    <a id="CD" class="text-center bg-sidelink-1" asp-action="Comorbidities"><div class="m-3"><span class="linklogo logo-1">CD</span></div>Comobidities</a>
+                </li>
+                <li>
+                    <a id="PH" class="text-center bg-sidelink-2" asp-action="Personal"><div class="m-3"><span class="linklogo logo-2">PH</span></div>Personal Habits</a>
+                </li>
+                <li class="dropdownbtn">
+                    <a id="CE" href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle bg-sidelink-1 text-center"><div class="m-3"><span class="linklogo logo-2">CE</span></div>Clinical Examination</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a id="CE1" class="text-left bg-sidelink-2" asp-action="GeneralExam">General Examination</a>
+                        </li>
+                        <li>
+                            <a id="CE2" class="text-left bg-sidelink-1" asp-action="CNS">CNS</a>
+                        </li>
+                        <li>
+                            <a id="CE3" class="text-left bg-sidelink-2" asp-action="RespSys">Respiratory System</a>
+                        </li>
+                        <li>
+                            <a id="CE4" class="text-left bg-sidelink-1" asp-action="AbdExam">Abdomen Examination</a>
+                        </li>
+                        <li>
+                            <a id="CE5" class="text-left bg-sidelink-2" asp-action="CVS">Cardiac-Vascular System</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a id="CI" class="text-center bg-sidelink-2" asp-action="Investigations"><div class="m-3"><span class="linklogo logo-2">C I</span></div>Investigations</a>
+                </li>
+                <li>
+                    <a id="OS" class="text-center bg-sidelink-1" asp-action="Other"><div class="m-3"><span class="linklogo logo-1">OS</span></div>Others</a>
+                </li>
+                <li>
+                    <a id="PR" class="text-center bg-sidelink-2" asp-action="Report"><div class="m-3"><span class="linklogo logo-2">PR</span></div>Patient Report</a>
+                </li>
+
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span class="pl-2">Menu</span>
+                    </button>
+
+                    <a type="button" id="sidebarCollapse" asp-action="Index" class="btn btn-danger float-right">
+                        <i class="fas fa-times-circle"></i>
+                        <span class="pl-2">Exit</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div>
+                @RenderBody()
+            </div>
+
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+    <script type="text/javascript">$(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });</script>
+</body>
+
+</html>

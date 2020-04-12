@@ -1,0 +1,668 @@
+﻿@model RamaMed.Models.BasicClinicalSymptom
+@{
+    Layout = "_BasicGMILayout";
+    ViewData["Title"] = "Diabetes Clinical Symptoms";
+}
+@{
+    UserData userdata = ViewBag.userData;
+}
+
+
+
+<div class="card">
+    <div class="card-header text-info text-uppercase">
+        <div class="m-0 p-0 pt-1 float-left"><h4>Clinical Symptoms</h4></div>
+
+        <div class="m-0 p-0 float-right"><a class="btn btn-outline-warning" style="text-decoration:none;" asp-action="Comorbidities">Skip</a></div>
+    </div>
+    <form method="post" class="card-body pt-0">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="w-100 form-group">
+            <div class="border-bottom">
+                <div class="row p-3">
+                    <div class="col-sm-3 text-center">
+                        <span class="font-weight-bold">Name : </span>@userdata.Name
+                    </div>
+
+                    <div class="col-sm-3">
+                        <span class="font-weight-bold text-center">Doctor : </span>@userdata.Doctor
+                    </div>
+
+                    <div class="col-sm-3">
+                        <span class="font-weight-bold text-center">UHID : </span>@userdata.UHID
+                        <input asp-for="@Model.UHID" value="@userdata.UHID" hidden />
+                        <span class="text-danger" asp-validation-for="UHID"></span>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <span class="font-weight-bold text-center">OPDNO : </span>@userdata.OPDNo
+                        <input asp-for="@Model.OPDNO" value="@userdata.OPDNo" hidden />
+                        <span class="text-danger" asp-validation-for="OPDNO"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        @{
+            if (Model != null)
+            {
+                <input asp-for="@Model.ID" hidden />
+                <input asp-for="@Model.CREATEDATE" hidden />
+            }
+            else
+            {
+                <div></div>
+            }
+        }
+
+
+
+        <div class="card-body pt-0">
+            <div class="row">
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Weight Gain</label>
+                        <input class="form-control col-4 mb-2 inputbox" asp-for="@Model.WEIGHT_GAIN_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="WEIGHT_GAIN_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Galactrorrhoea</label>
+                        <input class="form-control col-4 mb-2 inputbox" asp-for="@Model.GALACTRORRHOEA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="GALACTRORRHOEA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Increased apetite</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.INCREASED_APETITE_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="INCREASED_APETITE_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">
+                            Abdomen Pain
+                        </label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.ABDOMEN_PAIN_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="ABDOMEN_PAIN_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Palpitation</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.PALPITATION_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="PALPITATION_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">
+                            Enlargement of Foot
+                        </label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.ENLARGRMENT_OF_FOOT_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="ENLARGRMENT_OF_FOOT_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">
+                            Excessive sweating
+                        </label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.EXCESSIVE_SWEATING_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="EXCESSIVE_SWEATING_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Loss of Libido</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.LOSS_OF_LIBIDO_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="LOSS_OF_LIBIDO_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Oligomenoorhea</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.OLIGOMENOORHEA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="OLIGOMENOORHEA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Skin dryness</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.SKIN_DRYNESS_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="SKIN_DRYNESS_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Gynecomastia</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.GYNECOMASTIA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="GYNECOMASTIA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Tremor</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.TREMOR_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="TREMOR_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Diplopia</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.DIPLOPIA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="DIPLOPIA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Diarrhoea</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.DIARRHOEA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="DIARRHOEA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Enlargement of Hand</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.ENLARGEMENT_OF_HAND_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="ENLARGEMENT_OF_HAND_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Dysmeonorrhoea</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.DYSMEONORRHOEA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="DYSMEONORRHOEA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Hirsutism</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.HIRSUTISM_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="HIRSUTISM_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Amennorhoea</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.AMENNORHOEA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="AMENNORHOEA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Weight Loss</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.WEIGHT_LOSS_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="WEIGHT_LOSS_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Headache</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.HEADACHE_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="HEADACHE_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Loss of Apetite</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.LOSS_OF_APETITE_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="LOSS_OF_APETITE_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Seizures</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.SEIZURES_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="SEIZURES_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Constipation</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.CONSTIPATION_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="CONSTIPATION_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Infertility </label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.INFERTILITY_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="INFERTILITY_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Fatigue</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.FATIGUE_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="FATIGUE_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Pain/Tingling over -fingers</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.PAIN_OVER_FINGERS_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="PAIN_OVER_FINGERS_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Polymenorrhea</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.POLYMENORRHEA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="POLYMENORRHEA_DURATION"></span>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Nausea</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.NAUSEA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="NAUSEA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Vomiting</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.VOMITING_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="VOMITING_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Altered bowel habits</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.ALTERED_BOWEL_HABITS_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="ALTERED_BOWEL_HABITS_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Malena</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.MALENA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="MALENA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Hematemesis</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.HEMATEMESIS_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="HEMATEMESIS_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Dyspesia</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.DYSPESIA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="DYSPESIA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Fever</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.FEVER_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="FEVER_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Icterus</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.ICTERUS_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="ICTERUS_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">
+                            Abdominal distension
+                        </label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.ABDOMINAL_DISTENSION_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="ABDOMINAL_DISTENSION_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Easy fatiguability</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.EASY_FATIGUABILITY_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="EASY_FATIGUABILITY_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Breathelessness</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.BREATHLESSNESS_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="BREATHLESSNESS_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Involuntary movements</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.INVOLUNTARY_MOVEMENTS_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="INVOLUNTARY_MOVEMENTS_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Altered sensorium</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.ALTERED_SENSORIUM_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="ALTERED_SENSORIUM_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Personality changes</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.PERSONALITY_CHANGES_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="PERSONALITY_CHANGES_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">
+                            Altered sleep pattern
+                        </label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.ALTERED_SLEEP_PATTERN_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="ALTERED_SLEEP_PATTERN_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Hematochezia</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.HEMATOCHEZIA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="HEMATOCHEZIA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Oliguria</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.OLIGURIA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="OLIGURIA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Dysphagia</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.DYSPHAGIA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="DYSPHAGIA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Facial puffiness</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.FACIAL_PUFFINESS_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="FACIAL_PUFFINESS_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Odynophagia</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.ODYNOPHAGIA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="ODYNOPHAGIA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Swelling of both legs</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.SWELLING_OF_BOTH_LEGS_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="SWELLING_OF_BOTH_LEGS_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Polyphagia</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.POLYPHAGIA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="POLYPHAGIA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Polydipsia</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.POLYDIPSIA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="POLYDIPSIA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">
+                            Yellowish discoloration - of urine
+                        </label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.YELLOWISH_DISCOLORATION_OF_URINE_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="YELLOWISH_DISCOLORATION_OF_URINE_DURATION"></span>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Dysuria</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.DYSURIA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="DYSURIA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Impotence</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.IMPOTENCE_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="IMPOTENCE_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">
+                            DysuBurning feet
+                        </label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.BURNING_FEET_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="BURNING_FEET_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Anginal pain</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.ANGINAL_PAIN_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="ANGINAL_PAIN_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Blurring of vision</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.BLURRING_OF_VISION_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="BLURRING_OF_VISION_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Site</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.SITE_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="SITE_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Postural dizziness</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.POSTURAL_DIZZINESS_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="POSTURAL_DIZZINESS_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Severity</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.SEVERITY_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="SEVERITY_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">
+                            Fatigue generalised -itching
+                        </label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.FATIGUE_GENERALISED_ITCHING_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="FATIGUE_GENERALISED_ITCHING_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Character</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.CHARACTER_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="CHARACTER_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Nocturia</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.NOCTURIA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="NOCTURIA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Tingling / Numbness</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.TINGLING_NUMBNESS_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="TINGLING_NUMBNESS_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Genital Itching</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.GENITAL_ITCHING_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="GENITAL_ITCHING_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Facial puffiness</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.FACIAL_PUFFINESS_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="FACIAL_PUFFINESS_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Weakness</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.WEAKNESS_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="WEAKNESS_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Cough</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.COUGH_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="COUGH_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">
+                            Genital ulcers
+                        </label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.GENITAL_ULCERS_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="GENITAL_ULCERS_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">
+                            Sputum | Hae
+                        </label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.SPUTUM_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="SPUTUM_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Pedal Edema</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.PEDAL_EDEMA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="PEDAL_EDEMA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">
+                            NYHA Class
+                        </label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.NYHA_CLASS_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="NYHA_CLASS_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">PND</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.PND_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="PND_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Orthopnoea</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.ORTHOPNOEA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="ORTHOPNOEA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Platypnoea</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.PLATYPNOEA_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="PLATYPNOEA_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Syncope</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.SYNCOPE_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="SYNCOPE_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Chest pain</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.CHEST_PAIN_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="CHEST_PAIN_DURATION"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Hoarseness of voice</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.HOARSENESS_DURATION" placeholder="Duration" />
+                        <span class="text-danger" asp-validation-for="HOARSENESS_DURATION"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 my-1 form-group">
+                    <div class="row border-bottom">
+                        <label class="form-label col-8">Others</label>
+                        <input class="col-4 form-control mb-2 inputbox" asp-for="@Model.OTHERS_DURATION" placeholder="text" />
+                        <span class="text-danger" asp-validation-for="OTHERS_DURATION"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card-footer bg-white border-0 mr-3 py-0">
+            <input class="float-right btn btn-outline-warning btn-success text-light py-3" type="submit" asp-action="ClinicalSave" value="Next" />
+        </div>
+        @*<div class="card-footer border-0 mt-0 pt-0">
+                <div class="row">
+                    <div class="offset-8 col-3">
+                        <input class="float-right btn btn-outline-warning btn-success text-light py-3" type="submit" asp-action="ClinicalSave" value="Next" />
+                    </div>
+                </div>
+            </div>*@
+    </form>
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+<script>window.onload = function () {
+        var element = document.getElementById("CS");
+        element.classList.add("activelink");
+    };</script>
+
+
+
+
