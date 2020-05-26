@@ -68,6 +68,18 @@ namespace RamaMed.Controllers
                 {
                     return RedirectToAction("Index", "Cardio");
                 }
+                if (HttpContext.Session.GetString("Role") == "Diabetes")
+                {
+                    return RedirectToAction("Index", "Diabetes");
+                }
+                if (HttpContext.Session.GetString("Role") == "Basic")
+                {
+                    return RedirectToAction("Index", "BasicGMI");
+                }
+                if (HttpContext.Session.GetString("Role") == "Endocrinology")
+                {
+                    return RedirectToAction("Index", "Endocrino");
+                }
             }
             
             return RedirectToAction("Index");

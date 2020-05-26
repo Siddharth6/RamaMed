@@ -29,7 +29,7 @@ namespace RamaMed.Controllers
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (HttpContext.Session.GetString("UserId") != null)
+            if (HttpContext.Session.GetString("UserId") != null && HttpContext.Session.GetString("Role")== "Gastro")
                 base.OnActionExecuting(filterContext);
             else
                 RedirectToAction("Index");

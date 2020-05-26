@@ -55,24 +55,25 @@
             }
 
 
-            <div class="loginform" style="min-width:300px;max-width:400px;">
-                <form class="container form-group" method="POST">
-                    <div asp-validation-summary="All" class="text-danger"></div>
-                    <div class="form-group">
-                        <br>
-                        <label asp-for="@Model.LoginViewModel.UserId"></label>
-                        <input class="form-control" asp-for="@Model.LoginViewModel.UserId">
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="@Model.LoginViewModel.Password"></label>
-                        <input type="password" class="form-control" asp-for="@Model.LoginViewModel.Password">
-                    </div>
-                    <div class="text-center">
-                        <input type="submit" asp-action="Validate" asp-controller="Home" value="Login" class="btn btn-success btn-block" />
-                        <button class="btn btn-outline-success btn-block" id="register-btn">Don't have account</button>
-                    </div>
-                </form>
-            </div>
+        <div class="loginform" style="min-width:300px;max-width:400px;">
+            <form class="container form-group" method="POST">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <br>
+                    <label asp-for="@Model.LoginViewModel.UserId"></label>
+                    <input class="form-control" asp-for="@Model.LoginViewModel.UserId">
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.LoginViewModel.Password"></label>
+                    <input type="password" class="form-control" asp-for="@Model.LoginViewModel.Password">
+                </div>
+                <div class="text-center">
+                    <input type="submit" asp-action="Validate" asp-controller="Home" value="Login" class="btn btn-success btn-block" />
+                    <button class="btn btn-outline-success btn-block" id="register-btn">Don't have account</button>
+                </div>
+                <a class="btn btn-outline-success btn-block mt-2" id="opd-btn" asp-action="index" asp-controller="Opd">Create OPD</a>
+            </form>
+        </div>
             <div class="signupform" style="display:none; min-width:300px;max-width:400px;">
                 <form asp-action="Register" asp-controller="Home" method="post">
                     <div class="row">
@@ -106,8 +107,15 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label asp-for="@Model.RegistrationViewModel.Role"></label>
-                                <input asp-for="@Model.RegistrationViewModel.Role" class="form-control" value="@{ if (TempData["Role"] != null) { @TempData["Role"]; } }">
+                                <label asp-for="@Model.RegistrationViewModel.Role">Role</label>
+                                @*<input asp-for="@Model.RegistrationViewModel.Role" class="form-control" value="@{ if (TempData["Role"] != null) { @TempData["Role"]; } }">*@
+                                <select asp-for="@Model.RegistrationViewModel.Role" class="form-control">
+                                    <option value="Gastro">Gastrology</option>
+                                    <option value="Cardiology">Cardiology</option>
+                                    <option value="Diabetes">Diabetes</option>
+                                    <option value="Basic">Basic</option>
+                                    <option value="Endocrinology">Endocrinology</option>
+                                </select>
                             </div>
                             @*<span asp-validation-for="@Model.RegistrationViewModel.Role"></span>*@
                         </div>

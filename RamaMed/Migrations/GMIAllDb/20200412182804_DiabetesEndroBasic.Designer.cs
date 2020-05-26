@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RamaMed.Data;
 
 namespace RamaMed.Migrations.GMIAllDb
 {
     [DbContext(typeof(GMIAllDbContext))]
-    partial class GMIAllDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200412182804_DiabetesEndroBasic")]
+    partial class DiabetesEndroBasic
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

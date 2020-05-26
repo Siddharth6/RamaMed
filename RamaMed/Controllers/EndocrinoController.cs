@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 using RamaMed.Data;
 using RamaMed.Models;
@@ -23,6 +24,16 @@ namespace RamaMed.Controllers
         {
             _db = db;
             _gmidb = gmidb;
+        }
+
+
+
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            if (HttpContext.Session.GetString("UserId") != null && HttpContext.Session.GetString("Role") == "Endocrinology")
+                base.OnActionExecuting(filterContext);
+            else
+                RedirectToAction("Index");
         }
 
 
